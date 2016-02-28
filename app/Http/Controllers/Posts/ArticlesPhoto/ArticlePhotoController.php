@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Posts\ArticlesPhoto\AddPhotoRequest;
 use Illuminate\Support\Facades\Session;
 use App\MyLibraries\PhotoTreatment;
+use App\Posts\ArticlesPhoto\Article_photo;
 
 class ArticlePhotoController extends Controller
 {
@@ -27,6 +28,9 @@ class ArticlePhotoController extends Controller
     	$treatment = new PhotoTreatment();
     	if ($treatment->fileTreatment($request->file('photo_file')))
     	{
+    		$newPhoto = new Article_photo();
+    		//$newPhoto->
+    		
     		return redirect(route('addPhoto'))->with('success', 'La photo a été ajoutée avec succès !');
     	}
     	else
