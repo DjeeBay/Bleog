@@ -1,0 +1,23 @@
+body {
+	background-image: url('stars.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.jumbotron p {
+	font-size: 14px;
+}
+
+.panel-heading-green {
+	color: #fff;
+	background-color: #33B7A8;
+	border-color: #33B7A8;
+	padding: 10px 15px;
+	border-bottom: 1px solid transparent;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+}
+
+.panel-primary-green {
+	border-color: #33B7A8;
+}

@@ -1,0 +1,30 @@
+@extends('layout.main')
+
+@section('title')
+	Accueil
+@stop
+
+@section('top-content')
+	<img class="img-responsive" src="css/eog.jpg" style="margin-top: -19px;margin-bottom: -50px">
+@stop
+
+@section('content')
+	<h1 style="text-align: center">Blog d'Eogan</h1>
+  	<hr>
+	<div class="alert alert-danger alert-dismissible" role="alert" style="margin-bottom: 0px" id="emldiv">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<form class="form-horizontal" method="post" action="" id="sub">
+			<div class="form-group" style="margin-bottom: 0px;">
+				<label class="control-label col-sm-4" for="inputGroupSuccess2">Recevoir un mail à chaque nouveauté</label>
+				<div class="col-sm-4">
+					<div class="input-group">
+						<span class="input-group-addon">@</span>
+						<input type="email" class="form-control" id="mail" name="name" aria-describedby="inputGroupSuccess2Status">
+					</div>
+				</div>
+				<button type="submit" class="btn btn-default" id="submit" name="send">Confirmer</button>
+			</div>
+		</form>
+	</div>
+	@include('index.listing')
+@stop
