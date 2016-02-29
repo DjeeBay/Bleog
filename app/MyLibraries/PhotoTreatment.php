@@ -2,7 +2,6 @@
 namespace App\MyLibraries;
 
 use Symfony\Component\HttpFoundation\File\File;
-use Illuminate\Support\Facades\URL;
 class PhotoTreatment
 {
 	protected $picsname;

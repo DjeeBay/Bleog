@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Posts\ArticlesPhoto\AddPhotoRequest;
 use App\MyLibraries\PhotoTreatment;
 use App\Posts\ArticlesPhoto\Article_photo;
-use App\Posts\Post;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Posts\PostController;
 
 class ArticlePhotoController extends Controller
 {
@@ -32,12 +32,7 @@ class ArticlePhotoController extends Controller
     		]);
     		$newPhoto->save();
     		
-    		$newPost = new Post();
-    		$newPost->type = 'photo';
-    		$newPost->user_id = Auth::user()->id;
-    		$newPost->defined_date = $request->photo_date;
-    		$newPost->type_key_id = $newPhoto->getKey();
-    		$newPost->save();
+    		new PostController('photo', Auth::user()->id, $newPhoto->getKey(), $request->photo_date);
     		
     		return redirect(route('addPhoto'))->with('success', 'La photo a été ajoutée avec succès !');
     	}

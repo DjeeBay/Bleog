@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Posts\ArticlesVideo;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Posts\Articlesvideo\AddVideoRequest;
+use App\Posts\ArticlesVideo\Article_video;
+use App\Http\Controllers\Posts\PostController;
+use Illuminate\Support\Facades\Auth;
+use App\MyLibraries\VideoTreatment;
 
 class ArticleVideoController extends Controller
 {
@@ -22,6 +23,13 @@ class ArticleVideoController extends Controller
     
     public function postForm(AddVideoRequest $request)
     {
-    	var_dump($request);
+    	$newVideo = new Article_video();
+    	$newVideo->title = $request->video_title;
+    	$newVideo->link = VideoTreatment::getIdYoutube($request->video_link);
+    	$newVideo->save();
+    	
+    	new PostController('video', Auth::user()->id, $newVideo->getKey(), $request->video_date);
+    	
+    	return back()->with('success', 'La vidéo a été ajoutée avec succès !');
     }
 }

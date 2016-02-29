@@ -21,7 +21,7 @@
 		<div class="form-group">
 			{!! Form::label('video_link', 'Lien de la vidéo') !!}
 			{!! $errors->first('video_link', '<small><font color="red"><b>:message</b></font></small>') !!}
-			{!! Form::text('video_link', null, ['class' => 'form-control', 'placeholder' => 'Entrer un lien Youtube']) !!}
+			{!! Form::url('video_link', null, ['class' => 'form-control', 'placeholder' => 'Entrer un lien Youtube']) !!}
 			{!! csrf_field() !!}
 		</div>
 		{!! Form::submit('Envoyer', ['class' => 'btn btn-primary']) !!}
