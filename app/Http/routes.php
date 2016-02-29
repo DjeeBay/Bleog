@@ -50,4 +50,14 @@ Route::group(['middleware' => 'web'], function () {
     		'as' => 'addPhoto',
     		'uses' => 'Posts\ArticlesPhoto\ArticlePhotoController@postForm'
     ]);
+    
+    Route::get('/add/video', [
+    		'as' => 'addVideo',
+    		'uses' => 'Posts\ArticlesVideo\ArticleVideoController@getForm'
+    ]);
+    
+    Route::post('/add/video', [
+    		'as' => 'addVideo',
+    		'uses' => 'Posts\ArticlesVideo\ArticleVideoController@postForm'
+    ]);
 });

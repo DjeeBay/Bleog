@@ -4,6 +4,7 @@ namespace App\Http\Requests\Posts\ArticlesPhoto;
 
 use App\Http\Requests\Request;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class AddPhotoRequest extends Request
 {
