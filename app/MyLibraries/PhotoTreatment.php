@@ -5,6 +5,8 @@ use Symfony\Component\HttpFoundation\File\File;
 use Illuminate\Support\Facades\URL;
 class PhotoTreatment
 {
+	protected $picsname;
+	
 	public function fileTreatment(File $file)
 	{
 		$valid_ext = array('jpg', 'jpeg', 'png');
@@ -41,7 +43,18 @@ class PhotoTreatment
 				imagepng($dest_file, public_path('/pics/mini/').$file_name);
 				$file->move(public_path('/pics/'), $file_name);
 			}
+			$this->setPicsname($file_name);
 			return true;
 		}
+	}
+	
+	private function setPicsname($picsname)
+	{
+		$this->picsname = $picsname;
+	}
+	
+	public function getPicsname()
+	{
+		return $this->picsname;
 	}
 }

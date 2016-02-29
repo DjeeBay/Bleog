@@ -22,6 +22,6 @@ class Article_photo extends Model
 	
 	public function post()
 	{
-		$this->belongsTo('App\Posts\Post');
+		return $this->belongsTo('App\Posts\Post', 'type_key_id');
 	}
 }

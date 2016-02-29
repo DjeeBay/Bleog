@@ -22,6 +22,6 @@ class Post extends Model
 	
 	public function articlesPhoto()
 	{
-		$this->hasMany('App\Posts\ArticlesPhoto\Article_photo');
+		return $this->hasMany('App\Posts\ArticlesPhoto\Article_photo', 'id', 'type_key_id');
 	}
 }
