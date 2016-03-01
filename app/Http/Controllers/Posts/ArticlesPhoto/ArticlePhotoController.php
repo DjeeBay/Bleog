@@ -8,6 +8,8 @@ use App\MyLibraries\PhotoTreatment;
 use App\Posts\ArticlesPhoto\Article_photo;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Posts\PostController;
+use Illuminate\Support\Facades\Gate;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class ArticlePhotoController extends Controller
 {
@@ -18,6 +20,10 @@ class ArticlePhotoController extends Controller
     
     public function getForm()
     {
+    	if (Gate::denies('restrict-access', Auth::user()))
+    	{
+    		abort(403);
+    	}
     	return view('forms.posts.articles_photo.add_photo');
     }
     

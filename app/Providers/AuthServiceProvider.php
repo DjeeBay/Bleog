@@ -27,5 +27,8 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies($gate);
 
         //
+        $gate->define('restrict-access', function ($user) {
+        	return $user->admin == '1';
+        });
     }
 }

@@ -8,6 +8,7 @@ use App\Posts\ArticlesVideo\Article_video;
 use App\Http\Controllers\Posts\PostController;
 use Illuminate\Support\Facades\Auth;
 use App\MyLibraries\VideoTreatment;
+use Illuminate\Support\Facades\Gate;
 
 class ArticleVideoController extends Controller
 {
@@ -18,6 +19,11 @@ class ArticleVideoController extends Controller
     
     public function getForm()
     {
+    	if (Gate::denies('restrict-access', Auth::user()))
+    	{
+    		abort(403);
+    	}
+    	
     	return view('forms.posts.articles_video.add_video');
     }
     
