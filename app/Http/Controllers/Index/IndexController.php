@@ -41,7 +41,7 @@ class IndexController extends Controller
     		->selectRaw('EXTRACT(YEAR_MONTH FROM posts.defined_date) as Date, posts.type, articles.id as article_id, articles.title as article_title,
     				articles_photo.id as photo_id, articles_photo.picsname as photo_name,
     				articles_video.id as video_id, articles_video.link as video_link, articles_video.title as video_title')
-    		->orderBy('Date', 'desc')
+    		->orderBy('posts.defined_date', 'desc')
     		->get();
     		
     	$byMonths = $this->makeTheMonths($months);
