@@ -41,6 +41,7 @@ Route::group(['middleware' => 'web'], function () {
     		'uses' => 'Index\IndexController@showIndex'
     ]);
     
+    // Add pages
     Route::get('/add/photo', [
     		'as' => 'addPhoto',
     		'uses' => 'Posts\ArticlesPhoto\ArticlePhotoController@getForm'
@@ -59,5 +60,11 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/add/video', [
     		'as' => 'addVideo',
     		'uses' => 'Posts\ArticlesVideo\ArticleVideoController@postForm'
+    ]);
+    
+    // Displaying single post.
+    Route::get('/photo/{id}', [
+    		'as' => 'photosPage',
+    		'uses' => 'GetPost\Photo\PhotoController@getPhoto'
     ]);
 });
