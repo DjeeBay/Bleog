@@ -19,13 +19,13 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Modification de la date</h4>
       </div>
-      {!! Form::open(array('url' => '#', 'class' => 'form-inline')) !!}
+      {!! Form::open(array('route' => ['modifyPhotoDate', $photo->id], 'class' => 'form-inline')) !!}
       <div class="modal-body">
         <p><b>La date actuelle est : </b>{{ $photo->date }}</p>
         <br />
         	<div class="form-group">
-        		{!! Form::label('photos_date', 'Modifier :') !!}
-        		{!! Form::date('photos_date', \Carbon\Carbon::now(), ['class' => 'form-control']) !!}
+        		{!! Form::label('photo_date', 'Modifier :') !!}
+        		{!! Form::date('photo_date', \Carbon\Carbon::now(), ['class' => 'form-control']) !!}
         	</div>
       </div>
       <div class="modal-footer">

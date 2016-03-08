@@ -62,9 +62,14 @@ Route::group(['middleware' => 'web'], function () {
     		'uses' => 'Posts\ArticlesVideo\ArticleVideoController@postForm'
     ]);
     
-    // Displaying single post.
+    // Displaying and modifying single post.
     Route::get('/photo/{id}', [
     		'as' => 'photosPage',
     		'uses' => 'GetPost\Photo\PhotoController@getPhoto'
+    ]);
+    
+    Route::post('/photo/{id}', [
+    		'as' => 'modifyPhotoDate',
+    		'uses' => 'GetPost\Photo\PhotoController@modifyDate'
     ]);
 });
