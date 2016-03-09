@@ -69,8 +69,18 @@ Route::group(['middleware' => 'web'], function () {
     ]);
     
     Route::post('/photo/{id}', [
-    		'as' => 'modifyPhotoDate',
-    		'uses' => 'GetPost\Photo\PhotoController@modifyDate'
+    		'as' => 'modifyPhoto',
+    		'uses' => 'GetPost\Photo\PhotoController@modifyPhoto'
+    ]);
+    
+    Route::get('/video/{id}', [
+    		'as' => 'videosPage',
+    		'uses' => 'GetPost\Video\VideoController@getVideo'
+    ]);
+    
+    Route::post('/video/{id}', [
+    		'as' => 'modifyVideo',
+    		'uses' => 'GetPost\Video\VideoController@modifyVideo'
     ]);
     
 });

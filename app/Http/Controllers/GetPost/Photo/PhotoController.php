@@ -32,7 +32,7 @@ class PhotoController extends Controller
     	return view('getPost.getPhoto.photo')->with('queryPhoto', $queryPhoto);
     }
     
-    public function modifyDate(ModifyPhotoRequest $request, $id)
+    public function modifyPhoto(ModifyPhotoRequest $request, $id)
     {
     	// Modify the date.
     	if ($request->has('photo_date'))
