@@ -5,7 +5,7 @@
   <ul class="dropdown-menu">
     <li><a href="#" data-toggle="modal" data-target="#dateEdit"><span class="glyphicon glyphicon-calendar"></span> Modifier la date</a></li>
     <li><a href="#" data-toggle="modal" data-target="#descriptionEdit"><span class="glyphicon glyphicon-align-left"></span> Modifier le titre</a></li>
-    <li><a href="#" data-toggle="modal" data-target="#linkEdit"><span class="glyphicon glyphicon-wrench"></span> Modifier la vidéo</a></li>
+    <li><a href="{{ route('editArticle', $article->id) }}"><span class="glyphicon glyphicon-wrench"></span> Modifier l'article</a></li>
     <li role="separator" class="divider"></li>
     <li><a href="#" data-toggle="modal" data-target="#removeAll"><span class="glyphicon glyphicon-trash"></span> Supprimer la page</a></li>
   </ul>
@@ -19,13 +19,13 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Modification de la date</h4>
       </div>
-      {!! Form::open(array('route' => ['modifyVideo', $video->id], 'class' => 'form-inline')) !!}
+      {!! Form::open(array('route' => ['modifyArticle', $article->id], 'class' => 'form-inline')) !!}
       <div class="modal-body">
-        <p><b>La date actuelle est : </b>{{ $video->date }}</p>
+        <p><b>La date actuelle est : </b>{{ $article->date }}</p>
         <br />
         	<div class="form-group">
-        		{!! Form::label('video_date', 'Modifier :') !!}
-        		{!! Form::date('video_date', \Carbon\Carbon::now(), ['class' => 'form-control']) !!}
+        		{!! Form::label('article_date', 'Modifier :') !!}
+        		{!! Form::date('article_date', \Carbon\Carbon::now(), ['class' => 'form-control']) !!}
         	</div>
       </div>
       <div class="modal-footer">
@@ -43,34 +43,12 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Modification du titre</h4>
       </div>
-      {!! Form::open(['route' => ['modifyVideo', $video->id], 'class' => 'form-inline']) !!}
+      {!! Form::open(['route' => ['modifyArticle', $article->id], 'class' => 'form-inline']) !!}
       <div class="modal-body">
       	<div class="form-group">
-        	{!! Form::label('video_title', 'Titre : ') !!}
-        	{!! Form::text('video_title', $video->title, ['class' => 'form-control'])  !!}
+        	{!! Form::label('article_title', 'Titre : ') !!}
+        	{!! Form::text('article_title', $article->title, ['class' => 'form-control'])  !!}
       	</div>
-      </div>
-      <div class="modal-footer">
-        {!! Form::button('Annuler', ['class' => 'btn btn-default', 'data-dismiss' => 'modal']) !!}
-        {!! Form::submit('Sauvegarder', ['class' => 'btn btn-primary']) !!}
-      </div>
-      {!! Form::close() !!}
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="linkEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modification du lien de la vidéo</h4>
-      </div>
-      {!! Form::open(['route' => ['modifyVideo', $video->id]]) !!}
-      <div class="modal-body">
-        <div class="form-group">
-          {!! Form::label('video_link', 'Nouveau lien : ') !!}
-          {!! Form::url('video_link', null, ['class' => 'form-control', 'placeholder' => 'Entrer un lien YouTube']) !!}
-        </div>
       </div>
       <div class="modal-footer">
         {!! Form::button('Annuler', ['class' => 'btn btn-default', 'data-dismiss' => 'modal']) !!}
@@ -90,7 +68,7 @@
       <div class="modal-body">
         <div class="alert alert-danger" role="alert"><b>Attention !</b> Êtes-vous sûr de vouloir supprimer définitivement cette page ?</div>
       </div>
-      {!! Form::open(['route' => ['modifyVideo', $video->id]]) !!}
+      {!! Form::open(['route' => ['modifyArticle', $article->id]]) !!}
       <div class="modal-footer">
         {!! Form::button('Annuler', ['class' => 'btn btn-default', 'data-dismiss' => 'modal']) !!}
         {!! Form::submit('Confirmer la suppression', ['name' => 'delThePost', 'class' => 'btn btn-danger']) !!}

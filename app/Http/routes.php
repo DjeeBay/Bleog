@@ -62,6 +62,16 @@ Route::group(['middleware' => 'web'], function () {
     		'uses' => 'Posts\ArticlesVideo\ArticleVideoController@postForm'
     ]);
     
+    Route::get('/add/article', [
+    		'as' => 'addArticle',
+    		'uses' => 'Posts\Articles\ArticleController@getForm'
+    ]);
+    
+    Route::post('/add/article', [
+    		'as' => 'addArticle',
+    		'uses' => 'Posts\Articles\ArticleController@postForm'
+    ]);
+    
     // Displaying and modifying single post.
     Route::get('/photo/{id}', [
     		'as' => 'photosPage',
@@ -81,6 +91,26 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/video/{id}', [
     		'as' => 'modifyVideo',
     		'uses' => 'GetPost\Video\VideoController@modifyVideo'
+    ]);
+    
+    Route::get('/article/{id}', [
+    		'as' => 'articlesPage',
+    		'uses' => 'GetPost\Article\ArticleController@getArticle'
+    ]);
+    
+    Route::post('/article/{id}', [
+    		'as' => 'modifyArticle',
+    		'uses' => 'GetPost\Article\ArticleController@modifyArticle'
+    ]);
+    
+    Route::get('/article/{id}/edit', [
+    		'as' => 'editArticle',
+    		'uses' => 'GetPost\Article\ArticleController@getEditableArticle'
+    ]);
+    
+    Route::post('/article/{id}/edit', [
+    		'as' => 'editArticle',
+    		'uses' => 'GetPost\Article\ArticleController@editArticle'
     ]);
     
 });

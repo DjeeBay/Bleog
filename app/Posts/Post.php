@@ -19,9 +19,4 @@ class Post extends Model
 	 * @var array
 	 */
 	protected $fillable = ['type', 'user_id', 'type_key_id', 'defined_date'];
-	
-	public function articlesPhoto()
-	{
-		return $this->hasMany('App\Posts\ArticlesPhoto\Article_photo', 'id', 'type_key_id');
-	}
 }
