@@ -26,13 +26,14 @@
 			@if(session()->has('fail'))
 				<div class="alert alert-danger alert-dismissible" role="alert">
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					{!! session('fail') !!}
+					<span class="glyphicon glyphicon-oremove-circle"></span> {!! session('fail') !!}
 				</div>
 			@endif
+			@yield('errors') <!-- Allow each view to display the $error message -->
 			@if(session()->has('success'))
 				<div class="alert alert-success alert-dismissible" role="alert">
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					{!! session('success') !!}
+					<span class="glyphicon glyphicon-ok-circle"></span> {!! session('success') !!}
 				</div>
 			@endif
 			@yield('content')

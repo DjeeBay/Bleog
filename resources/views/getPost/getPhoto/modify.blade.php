@@ -43,7 +43,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Modification de la description</h4>
       </div>
-      {!! Form::open(array('url' => '#')) !!}
+      {!! Form::open(['route' => ['modifyPhotoDate', $photo->id]]) !!}
       <div class="modal-body">
       	<div class="form-group">
         	{!! Form::label('description', 'Description :') !!}
@@ -55,7 +55,7 @@
 		@if (!empty($photo->title))
 			{!! Form::button('Supprimer la description', ['class' => 'btn btn-danger', 'data-toggle' => 'modal', 'data-target' => '#supprDesc']) !!}
 		@endif
-        {!! Form::button('Sauvegarder', ['class' => 'btn btn-primary']) !!}
+        {!! Form::submit('Sauvegarder', ['class' => 'btn btn-primary']) !!}
       </div>
       {!! Form::close() !!}
     </div>
@@ -68,7 +68,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Modification de la photo</h4>
       </div>
-      {!! Form::open(array('url' => '#', 'class' => 'form-inline', 'files' => true)) !!}
+      {!! Form::open(['route' => ['modifyPhotoDate', $photo->id], 'files' => 'true']) !!}
       <div class="modal-body">
         <p>Photo actuelle :</p>
         <div>
@@ -98,10 +98,10 @@
       <div class="modal-body">
         <div class="alert alert-danger" role="alert"><b>Attention !</b> Êtes-vous sûr de vouloir supprimer définitivement cette page ?</div>
       </div>
-      {!! Form::open(array('url' => '#')) !!}
+      {!! Form::open(['route' => ['modifyPhotoDate', $photo->id]]) !!}
       <div class="modal-footer">
         {!! Form::button('Annuler', ['class' => 'btn btn-default', 'data-dismiss' => 'modal']) !!}
-        {!! Form::submit('Confirmer la suppression', ['class' => 'btn btn-danger']) !!}
+        {!! Form::submit('Confirmer la suppression', ['name' => 'delThePost', 'class' => 'btn btn-danger']) !!}
       </div>
       {!! Form::close() !!}
     </div>
@@ -114,13 +114,13 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Suppression de la description</h4>
       </div>
-      {!! Form::open(array('url' => '#')) !!}
+      {!! Form::open(['route' => ['modifyPhotoDate', $photo->id]]) !!}
       <div class="modal-body">
         <div class="alert alert-danger" role="alert"><b>Attention !</b> Êtes-vous sûr de vouloir supprimer définitivement cette description ?</div>
       </div>
       <div class="modal-footer">
         {!! Form::button('Annuler', ['class' => 'btn btn-default', 'data-dismiss' => 'modal']) !!}
-        {!! Form::submit('Supprimer la description', ['class' => 'btn btn-danger']) !!}
+        {!! Form::submit('Supprimer la description', ['name' => 'delDescr', 'class' => 'btn btn-danger']) !!}
       </div>
       {!! Form::close() !!}
     </div>

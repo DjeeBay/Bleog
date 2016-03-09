@@ -72,4 +72,5 @@ Route::group(['middleware' => 'web'], function () {
     		'as' => 'modifyPhotoDate',
     		'uses' => 'GetPost\Photo\PhotoController@modifyDate'
     ]);
+    
 });

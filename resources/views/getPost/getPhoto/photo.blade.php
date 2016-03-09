@@ -6,8 +6,18 @@
 	Photo du {{ $photo->date }}
 @stop
 
+@section('errors')
+	@if($errors->has())
+		<div class="alert alert-danger alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			@foreach($errors->all() as $error)
+				<span class="glyphicon glyphicon-remove-circle"></span> {{ $error }}
+			@endforeach
+		</div>
+	@endif
+@stop
+
 @section('content')
-	{{ var_dump($queryPhoto) }}
 	<h2 style="text-align: center">Photo du {{ $photo->date }}</h2>
 	<hr>
 		
