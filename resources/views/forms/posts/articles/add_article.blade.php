@@ -1,5 +1,9 @@
 @extends('layout.main')
 
+@section('addInHead')
+	<script src="{{ URL::asset('ckeditor/ckeditor.js') }}"></script>
+@stop
+
 @section('title')
 	Ajouter un article
 @stop
@@ -21,9 +25,16 @@
 		<div class="form-group">
 			{!! Form::label('article_body', 'Article :') !!}
 			{!! $errors->first('article_body', '<small><font color="red"><b>:message</b></font></small>') !!}
-			{!! Form::textarea('article_body', null, ['class' => 'form-controle']) !!}
+			{!! Form::textarea('article_body', null) !!}
 			{!! csrf_field() !!}
 		</div>
 		{!! Form::submit('Envoyer', ['class' => 'btn btn-primary']) !!}
 	{!! Form::close() !!}
+	<!-- Adding CKEditor -->
+	<script>
+		CKEDITOR.replace('article_body', {
+			filebrowserBrowseUrl: '/articles_pics/sel_pics.php',
+	    	filebrowserUploadUrl: '/articles_pics/upload.php'
+		});
+	</script>
 @stop

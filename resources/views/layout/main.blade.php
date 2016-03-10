@@ -9,6 +9,7 @@
     {!! Html::style('css/navbar-static-top.css') !!}
     {!! Html::style('css/style.css') !!}
     <script src="{{ URL::asset('js/ie-emulation-modes-warning.js') }}"></script>
+    @yield('addInHead')
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
