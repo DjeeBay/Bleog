@@ -26,5 +26,43 @@
 			</div>
 		</form>
 	</div>
+	@if($moreToDisplay)
+		<nav style="text-align:center;">
+			<ul class="pagination">
+				<li>
+					@if($hasPrevious)
+						<a href="{{ route('index') }}?page={{ $currentPage + 1 }}" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span> Remonter dans le temps
+						</a>
+					@endif
+					@if($hasNext)
+						<a href="{{ route('index') }}?page={{ $currentPage - 1 }}" aria-label="Next">
+							Avancer dans le temps <span aria-hidden="true">&raquo;</span>
+						</a>
+					@endif
+				</li>
+			</ul>
+		</nav>
+	@else
+		<br>
+	@endif
 	@include('index.listing')
+	@if($moreToDisplay)
+		<nav style="text-align:center;">
+			<ul class="pagination">
+				<li>
+					@if($hasPrevious)
+						<a href="{{ route('index') }}?page={{ $currentPage + 1 }}" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span> Remonter dans le temps
+						</a>
+					@endif
+					@if($hasNext)
+						<a href="{{ route('index') }}?page={{ $currentPage - 1 }}" aria-label="Next">
+							Avancer dans le temps <span aria-hidden="true">&raquo;</span>
+						</a>
+					@endif
+				</li>
+			</ul>
+		</nav>
+	@endif
 @stop
