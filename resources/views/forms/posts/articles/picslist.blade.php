@@ -63,7 +63,7 @@
 				<img src="{{ URL::asset('pics/articles_pics/mini/'.$pic->picsname) }}" alt="{{ $pic->picsname }}">
 				<div class="caption">
 					<small>Lien à copier :</small>
-					<pre>/pics/articles_pics/mini/{{ $pic->picsname }}</pre>
+					<pre>{{ URL::asset('pics/articles_pics/mini/'.$pic->picsname) }}</pre>
 					{!! Form::checkbox('selectedPics', $pic->id) !!} <small>Cochez et cliquez sur Supprimer</small>
 					{!! Form::submit('Supprimer', ['class' => 'btn btn-danger btn-xs']) !!}
 				</div>
@@ -75,5 +75,12 @@
 	<script src="{{ URL::asset('js/ie10-viewport-bug-workaround.js') }}"></script>
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
+	<script src="{{ URL::asset('js/ekko-lightbox.min.js') }}"></script>
+	<script type="text/javascript">
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox();
+    }); 
+    </script>
     </body>
 </html>

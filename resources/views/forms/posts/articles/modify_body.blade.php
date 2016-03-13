@@ -47,3 +47,12 @@
 @stop
 
 @endforeach
+@section('addScript')
+	<script src="{{ URL::asset('js/ekko-lightbox.min.js') }}"></script>
+	<script type="text/javascript">
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox();
+    }); 
+    </script>
+@stop

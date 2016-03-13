@@ -66,3 +66,6 @@
 		</nav>
 	@endif
 @stop
+@section('addScript')
+	<script src="{{ URL::asset('js/newsletter.js') }}"></script>
+@stop

@@ -44,6 +44,6 @@
     <script src="{{ URL::asset('js/ie10-viewport-bug-workaround.js') }}"></script>
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ URL::asset('js/newsletter.js') }}"></script>
+    @yield('addScript')
   </body>
 </html>

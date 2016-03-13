@@ -1,5 +1,9 @@
 @extends('layout.main')
 
+@section('addInHead')
+	{!! Html::style('css/ekko-lightbox.min.css') !!}
+@stop
+
 @foreach($queryArticle as $article)
 
 @section('title')
@@ -33,6 +37,16 @@
 			{!! $article->body !!}
 		</div>
 	</div>
+@stop
+
+@section('addScript')
+	<script src="{{ URL::asset('js/ekko-lightbox.min.js') }}"></script>
+	<script type="text/javascript">
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox();
+    }); 
+    </script>
 @stop
 
 @endforeach
