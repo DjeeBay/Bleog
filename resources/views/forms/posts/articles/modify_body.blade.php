@@ -41,8 +41,7 @@
 		<!-- Adding CKEditor -->
 		<script>
 			CKEDITOR.replace('article_body', {
-				filebrowserBrowseUrl: '/articles_pics/sel_pics.php',
-	    		filebrowserUploadUrl: '/articles_pics/upload.php'
+				filebrowserBrowseUrl: '{{ route('getGallery') }}'
 			});
 		</script>
 @stop

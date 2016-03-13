@@ -6,10 +6,26 @@ class PhotoTreatment
 {
 	protected $picsname;
 	
-	public function fileTreatment(File $file)
+	public function fileTreatment(File $file, $type)
 	{
 		$valid_ext = array('jpg', 'jpeg', 'png');
 		$real_ext = strtolower((substr(strrchr($file->getClientOriginalName(), '.'), 1)));
+		
+		if ($type == 'photo')
+		{
+			$miniPath = '/pics/mini/';
+			$largePath = '/pics/';
+		}
+		else if ($type == 'articles_pic')
+		{
+			$miniPath = '/pics/articles_pics/mini/';
+			$largePath = '/pics/articles_pics';
+		}
+		else 
+		{
+			return false;
+		}
+		
 		if ($file->getError() > 0 || $file->getSize() > 2080000 || !in_array($real_ext, $valid_ext) || !getimagesize($file->getFileInfo()))
 		{
 			return false;
@@ -27,8 +43,8 @@ class PhotoTreatment
 				$dest_width = imagesx($dest_file);
 				$dest_height = imagesy($dest_file);
 				imagecopyresampled($dest_file, $src_file, 0, 0, 0, 0, $dest_width, $dest_height, $src_width, $src_height);
-				imagejpeg($dest_file, public_path('/pics/mini/').$file_name);
-				$file->move(public_path('/pics/'), $file_name);
+				imagejpeg($dest_file, public_path($miniPath).$file_name);
+				$file->move(public_path($largePath), $file_name);
 			}
 			elseif ($real_ext == 'png')
 			{
@@ -39,8 +55,8 @@ class PhotoTreatment
 				$dest_width = imagesx($dest_file);
 				$dest_height = imagesy($dest_file);
 				imagecopyresampled($dest_file, $src_file, 0, 0, 0, 0, $dest_width, $dest_height, $src_width, $src_height);
-				imagepng($dest_file, public_path('/pics/mini/').$file_name);
-				$file->move(public_path('/pics/'), $file_name);
+				imagepng($dest_file, public_path($miniPath).$file_name);
+				$file->move(public_path($largePath), $file_name);
 			}
 			$this->setPicsname($file_name);
 			return true;

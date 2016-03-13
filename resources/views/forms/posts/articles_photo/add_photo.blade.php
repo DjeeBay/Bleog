@@ -22,7 +22,6 @@
 			{!! Form::label('photo_file', 'Choisir la photo (jpg, png, max. 2Mo)') !!}
 			{!! $errors->first('photo_file', '<small><font color="red"><b>:message</b></font></small>') !!}
 			{!! Form::file('photo_file') !!}
-			{!! csrf_field() !!}
 		</div>
 		{!! Form::submit('Envoyer', ['class' => 'btn btn-primary']) !!}
 	{!! Form::close() !!}

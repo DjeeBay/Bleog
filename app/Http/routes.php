@@ -72,6 +72,21 @@ Route::group(['middleware' => 'web'], function () {
     		'uses' => 'Posts\Articles\ArticleController@postForm'
     ]);
     
+    Route::get('add/article/gallery', [
+    		'as' => 'getGallery',
+    		'uses' => 'Posts\Articles\ArticleController@getGallery'
+    ]);
+    
+    Route::post('add/article/gallery', [
+    		'as' => 'getGallery',
+    		'uses' => 'Posts\Articles\ArticleController@delGallery'
+    ]);
+    
+    Route::post('add/article/gallery/pic', [
+    		'as' => 'postGalleryPic',
+    		'uses' => 'Posts\Articles\ArticleController@sendAGalleryPic'
+    ]);
+    
     // Displaying and modifying single post.
     Route::get('/photo/{id}', [
     		'as' => 'photosPage',

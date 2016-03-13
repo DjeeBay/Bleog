@@ -30,7 +30,7 @@ class ArticlePhotoController extends Controller
     public function postForm(AddPhotoRequest $request)
     {
     	$treatment = new PhotoTreatment();
-    	if ($treatment->fileTreatment($request->file('photo_file')))
+    	if ($treatment->fileTreatment($request->file('photo_file'), 'photo'))
     	{
     		$newPhoto = new Article_photo([
     				'title' => $request->photo_description,
