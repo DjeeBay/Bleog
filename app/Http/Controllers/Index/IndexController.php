@@ -126,7 +126,6 @@ class IndexController extends Controller
     	{
     		return var_dump($request);
     	}
-    	return var_dump($request);
     }
     
     /**
