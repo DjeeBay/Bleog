@@ -24,7 +24,7 @@ class NewsletterRequest extends Request
     public function rules()
     {
         return [
-            'newsletter_email' => 'email'
+            'newsletter_email' => 'required|email'
         ];
     }
 }

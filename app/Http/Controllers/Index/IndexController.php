@@ -122,9 +122,11 @@ class IndexController extends Controller
     
     public function postNewsletter(NewsletterRequest $request)
     {
-    	//return response('success');
-    	echo 'ok';
-    	return back();
+    	if ($request->ajax())
+    	{
+    		return var_dump($request);
+    	}
+    	return var_dump($request);
     }
     
     /**
