@@ -22,15 +22,14 @@ class ArticleController extends Controller
 	public function __construct()
 	{
 		$this->middleware('auth');
-		
-		if (Gate::denies('restrict-access', Auth::user()))
-		{
-			abort(403);
-		}
 	}
 	
 	public function getForm()
     {
+    	if (Gate::denies('restrict-access', Auth::user()))
+    	{
+    		abort(403);
+    	}
     	return view('forms.posts.articles.add_article');
     }
     

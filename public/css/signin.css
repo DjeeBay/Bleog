@@ -16,6 +16,12 @@ body {
 .form-signin .checkbox {
   font-weight: normal;
 }
+
+.checkbox input[type=checkbox] {
+	position: relative;
+	margin-left: 0px;
+}
+
 .form-signin .form-control {
   position: relative;
   height: auto;
