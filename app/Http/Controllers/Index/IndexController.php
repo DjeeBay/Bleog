@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\Index\NewsletterRequest;
+use App\Posts\Newsletter;
 
 class IndexController extends Controller
 {
@@ -124,7 +125,29 @@ class IndexController extends Controller
     {
     	if ($request->ajax())
     	{
-    		return var_dump($request);
+    		$newSubTest = Newsletter::where('email_address', $request->newsletter_email)->get();
+    		foreach ($newSubTest as $emlExists)
+    		{
+    			if ($emlExists->email_address === $request->newsletter_email)
+    			{
+    				return '<div class="alert alert-warning alert-dismissible" role="alert">
+    					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    					<strong>Erreur !</strong> L\'email : <u>'.$request->newsletter_email.'</u> est déjà enregistrée. Vous n\'avez pas besoin de l\'enregistrer à nouveau.
+						</div>';
+    			}
+    			elseif ($emlExists->email_address != $request->newsletter_email)
+    			{
+    				/*$uniqid = 'unsus'.md5(rand());
+    				$newSub = new Newsletter;
+    				$newSub->email_address = $request->newsletter_email;
+    				$newSub->uniqid = $uniqid;
+    				$newSub->save();*/
+    				return '<div class="alert alert-success alert-dismissible" role="alert">
+    					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    					<strong>Bravo !</strong> L\'email : <u>'.$request->newsletter_email.'</u> a bien été enregistrée. Vous un email à chaque nouveautée.
+						</div>';
+    			}
+    		}
     	}
     }
     

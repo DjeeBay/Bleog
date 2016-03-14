@@ -16,9 +16,6 @@
 		<!-- <form class="form-horizontal" method="post" action="" id="sub"> -->
 		{!! Form::open(['route' => 'newsletter', 'id' => 'sub', 'class' => 'form-horizontal']) !!}
 			<div class="form-group" style="margin-bottom: 0px;">
-				@if($errors->has())
-					<span class="glyphicon glyphicon-warning-sign"></span> Veuillez entrer une adresse email valide.
-				@endif
 				{!! Form::label('inputEmail', 'Recevoir un mail à chaque nouveauté', ['class' => 'control-label col-sm-4', 'id' => 'labMail']) !!}
 				<div class="col-sm-4">
 					<div class="input-group">
