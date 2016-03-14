@@ -41,6 +41,11 @@ Route::group(['middleware' => 'web'], function () {
     		'uses' => 'Index\IndexController@showIndex'
     ]);
     
+    Route::post('/', [
+    		'as' => 'newsletter',
+    		'uses' => 'Index\IndexController@postNewsletter'
+    ]);
+    
     // Add pages
     Route::get('/add/photo', [
     		'as' => 'addPhoto',

@@ -13,7 +13,8 @@
   	<hr>
 	<div class="alert alert-danger alert-dismissible" role="alert" style="margin-bottom: 0px" id="emldiv">
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		<form class="form-horizontal" method="post" action="" id="sub">
+		<!-- <form class="form-horizontal" method="post" action="" id="sub"> -->
+		{!! Form::open(['route' => 'index', 'id' => 'sub', 'class' => 'form-horizontal']) !!}
 			<div class="form-group" style="margin-bottom: 0px;">
 				<label class="control-label col-sm-4" for="inputGroupSuccess2">Recevoir un mail à chaque nouveauté</label>
 				<div class="col-sm-4">
@@ -24,7 +25,7 @@
 				</div>
 				<button type="submit" class="btn btn-default" id="submit" name="send">Confirmer</button>
 			</div>
-		</form>
+		{!! Form::close() !!}
 	</div>
 	@if($moreToDisplay)
 		<nav style="text-align:center;">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Index;
 use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\Index\NewsletterRequest;
 
 class IndexController extends Controller
 {
@@ -117,6 +118,13 @@ class IndexController extends Controller
     	}
     	
     	return $byMonths;
+    }
+    
+    public function postNewsletter(NewsletterRequest $request)
+    {
+    	//return response('success');
+    	echo 'ok';
+    	return back();
     }
     
     /**
