@@ -12,7 +12,12 @@ use App\Posts\Post;
 
 class ArticleController extends Controller
 {
-    public function getArticle($id)
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
+	
+	public function getArticle($id)
     {
     	$queryArticle = $this->getModel($id);
     	

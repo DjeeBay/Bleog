@@ -14,7 +14,12 @@ use App\MyLibraries\VideoTreatment;
 
 class VideoController extends Controller
 {
-    public function getVideo($id)
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
+	
+	public function getVideo($id)
     {
     	$queryVideo = DB::table('posts')
     		->join('articles_video', function($join){
