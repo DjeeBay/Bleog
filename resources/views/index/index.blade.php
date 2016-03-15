@@ -22,8 +22,8 @@
 						<span class="input-group-addon">@</span>
 						{!! Form::email('inputEmail', null, ['class' => 'form-control']) !!}
 					</div>
+					{!! Form::submit('Confirmer', ['class' => 'btn btn-default']) !!}
 				</div>
-				{!! Form::submit('Confirmer', ['class' => 'btn btn-default']) !!}
 			</div>
 		{!! Form::close() !!}
 	</div>
