@@ -102,6 +102,16 @@ Route::group(['middleware' => 'web'], function () {
     		'uses' => 'Posts\Articles\ArticleController@sendAGalleryPic'
     ]);
     
+    Route::get('/newsletter', [
+    		'as' => 'newsletter',
+    		'uses' => 'Posts\Newsletter\NewsletterController@getForm'
+    ]);
+    
+    Route::post('/newsletter', [
+    		'as' => 'postNewsletter',
+    		'uses' => 'Posts\Newsletter\NewsletterController@postForm'
+    ]);
+    
     // Displaying and modifying single post.
     Route::get('/photo/{id}', [
     		'as' => 'photosPage',

@@ -21,7 +21,7 @@
                     <li><a href="{{ route('addPhoto') }}"><span class="glyphicon glyphicon-camera"></span> Ajout photos</a></li>
                     <li><a href="{{ route('addVideo') }}"><span class="glyphicon glyphicon-film"></span> Ajout vidéos</a></li>
                     <li><a href="{{ route('addArticle') }}"><span class="glyphicon glyphicon-pencil"></span> Ajout articles</a></li>
-                    <li><a href=""><span class="glyphicon glyphicon-envelope"></span> Envoi newsletters</a></li>
+                    <li><a href="{{ route('newsletter') }}"><span class="glyphicon glyphicon-envelope"></span> Envoi newsletters</a></li>
                   </ul>
               </li>
 			@endif

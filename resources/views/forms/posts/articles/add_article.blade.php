@@ -26,7 +26,6 @@
 			{!! Form::label('article_body', 'Article :') !!}
 			{!! $errors->first('article_body', '<small><font color="red"><b>:message</b></font></small>') !!}
 			{!! Form::textarea('article_body', null) !!}
-			{!! csrf_field() !!}
 		</div>
 		{!! Form::submit('Envoyer', ['class' => 'btn btn-primary']) !!}
 	{!! Form::close() !!}
