@@ -14,7 +14,7 @@
 	<div class="alert alert-danger alert-dismissible" role="alert" style="margin-bottom: 0px" id="emldiv">
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		<!-- <form class="form-horizontal" method="post" action="" id="sub"> -->
-		{!! Form::open(['route' => 'newsletter', 'id' => 'sub', 'class' => 'form-horizontal']) !!}
+		{!! Form::open(['route' => 'newMail', 'id' => 'sub', 'class' => 'form-horizontal']) !!}
 			<div class="form-group" style="margin-bottom: 0px;">
 				{!! Form::label('inputEmail', 'Recevoir un mail à chaque nouveauté', ['class' => 'control-label col-sm-4', 'id' => 'labMail']) !!}
 				<div class="col-sm-4">
@@ -22,8 +22,8 @@
 						<span class="input-group-addon">@</span>
 						{!! Form::email('inputEmail', null, ['class' => 'form-control']) !!}
 					</div>
-					{!! Form::submit('Confirmer', ['class' => 'btn btn-default']) !!}
 				</div>
+				{!! Form::submit('Confirmer', ['class' => 'btn btn-default']) !!}
 			</div>
 		{!! Form::close() !!}
 	</div>

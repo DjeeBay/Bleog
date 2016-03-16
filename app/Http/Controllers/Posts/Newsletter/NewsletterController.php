@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 use App\Posts\Newsletter;
+use App\Http\Requests\Posts\Newsletter\NewsletterRequest;
 
 class NewsletterController extends Controller
 {
@@ -28,8 +29,8 @@ class NewsletterController extends Controller
     	return view('forms.newsletter.newsletter')->with('subscribers', $subscribers);
     }
     
-    public function postForm(Request $request)
+    public function postForm(NewsletterRequest $request)
     {
-    	return var_dump($request->all());
+    	return redirect()->route('newsletter')->with('success', 'La newsletter a bien été envoyée !');
     }
 }

@@ -52,7 +52,7 @@ Route::group(['middleware' => 'web'], function () {
     ]);
     
     Route::post('/', [
-    		'as' => 'newsletter',
+    		'as' => 'newMail',
     		'uses' => 'Index\IndexController@postNewsletter'
     ]);
     
@@ -153,4 +153,14 @@ Route::group(['middleware' => 'web'], function () {
     		'uses' => 'GetPost\Article\ArticleController@editArticle'
     ]);
     
+    // Unsuscribe the newsletter
+    Route::get('/newsletter/unsuscribe/{id}', [
+    		'as' => 'unsusNewsletter',
+    		'uses' => 'Posts\Newsletter\UnsuscribeController@getUnsus'
+    ]);
+    
+    Route::post('/newsletter/unsuscribe/{id}', [
+    		'as' => 'unsusNewsletter',
+    		'uses' => 'Posts\Newsletter\UnsuscribeController@postUnsus'
+    ]);
 });
