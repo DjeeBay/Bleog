@@ -31,9 +31,9 @@
 			<tr class="warning">
 				<td><b>Adresses des inscrits</b></td>
 				<td>
-					<form action="view/newsletter/mailsList.php" method="post" target="_blank">
+					<a href="{{ route('subscribers') }}">
 					<button type="submit" class="btn btn-xs btn-danger" name="mailsList">Gérer les inscrits</button>
-					</form>
+					</a>
 				</td>
 			</tr>
 			@foreach($subscribers as $subscriber)
