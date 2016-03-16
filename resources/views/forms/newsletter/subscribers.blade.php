@@ -32,7 +32,7 @@
 								</div>
 								<div class="modal-body">
 									<div class="alert alert-danger" role="alert">
-										<span class="glyphicon glyphicon-oremove-circle"></span> Veuillez confirmer la suppression définitive de l'adresse <b>{{ $sub->email_address }}</b>
+										<span class="glyphicon glyphicon-oremove-circle"></span> Veuillez confirmer la suppression définitive de l'adresse <b>{{ $sub->email_address }}</b>.
 									</div>
 								</div>
 								<div class="modal-footer">
