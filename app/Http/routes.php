@@ -158,6 +158,11 @@ Route::group(['middleware' => 'web'], function () {
     		'uses' => 'Posts\Newsletter\SubscriberController@getList'
     ]);
     
+    Route::post('/newsletter/subscribers', [
+    		'as' => 'subscribers',
+    		'uses' => 'Posts\Newsletter\SubscriberController@postDelAddress'
+    ]);
+    
     // Unsuscribe the newsletter
     Route::get('/newsletter/unsuscribe/{id}', [
     		'as' => 'unsusNewsletter',

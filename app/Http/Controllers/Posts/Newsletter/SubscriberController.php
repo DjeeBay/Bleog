@@ -26,4 +26,10 @@ class SubscriberController extends Controller
     	$subscribers = Newsletter::all();
     	return view('forms.newsletter.subscribers')->with('subscribers', $subscribers);
     }
+    
+    public function postDelAddress(Request $request)
+    {
+    	$delSub = Newsletter::where('id', '=', $request->subId)->delete();
+    	return redirect()->route('subscribers')->with('success', 'L\'adresse <b>'.$request->subAddress.'</b> a bien été supprimée !');
+    }
 }
