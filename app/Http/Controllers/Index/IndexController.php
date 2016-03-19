@@ -210,7 +210,6 @@ class IndexController extends Controller
     	}
     	
     	$startEndTable = [];
-    	var_dump($limitTable);
     	if (empty($limitTable))
     	{
     		$limitTable = [0 => 0, 1 => 0];
