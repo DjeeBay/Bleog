@@ -150,12 +150,12 @@ class IndexController extends Controller
     					<strong>Bravo !</strong> L\'email : <u>'.$request->newsletter_email.'</u> a bien été enregistrée. Vous recevrez un email à chaque nouveautée.
 						</div>';
     		
-    		/*$headers  = 'MIME-Version: 1.0' . "\r\n";
+    		$headers  = 'MIME-Version: 1.0' . "\r\n";
     		$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
     		$message = 'Un nouvel abonné vient de s\'inscrire à la newsletter.<br>
 				Voici son adresse : <strong>email</strong><br><br>
 						<a href="http://www.bleog.fr"><strong>Bleog.fr</strong></a>';
-    		mail('thebestjb@gmail.com', 'test', 'test2');*/
+    		mail('thebestjb@gmail.com', 'test', 'test2');
     	}
     }
     
