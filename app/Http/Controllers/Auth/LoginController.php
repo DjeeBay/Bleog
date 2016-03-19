@@ -19,6 +19,13 @@ class LoginController extends Controller
     
     public function getLogin()
     {
+    	if (isset($_COOKIE['username']) && isset($_COOKIE['_pwd']))
+    	{
+    		if (Auth::attempt(['login' => $_COOKIE['username'], 'password' => 'visiteur']))
+    		{
+    			return redirect()->route('index');
+    		}
+    	}
     	return view('forms.login.login');
     }
     
@@ -26,9 +33,13 @@ class LoginController extends Controller
     {
     	if (Auth::attempt(['login' => $request->get('inputPseudo'), 'password' => $request->get('inputPassword')]))
     	{
+    		if ($request->has('rememberMe') && $request->rememberMe == 'rememberMe' && $request->inputPseudo == 'visiteur')
+    		{
+    			setcookie('username', Auth::user()->login, time() + 3600*24*365*10, null, null, false, true);
+    			setcookie('_pwd', 'visiteur', time() + 3600*24*365*10, null, null, false, true);
+    		}
     		return redirect()->route('index');
     	}
     	return redirect()->route('login')->with('fail', 'Erreur, mauvaise combinaison Pseudo / Mot de passe !');
-    	
     }
 }

@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -77,5 +78,17 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         	'admin' => $isAdmin,
         ]);
+    }
+    
+    public function logout()
+    {
+    	if (isset($_COOKIE['username']) && isset($_COOKIE['_pwd']))
+    	{
+    		setcookie('username', '', time() - 10);
+    		setcookie('_pwd', '', time() - 10);
+    	}
+    	Auth::guard($this->getGuard())->logout();
+    	
+    	return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
     }
 }
