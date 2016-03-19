@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Auth;
 use App\Http\Requests\Login\LoginRequest;
@@ -26,7 +24,6 @@ class LoginController extends Controller
     
     public function postLogin(LoginRequest $request)
     {
-    	//var_dump($request->all());
     	if (Auth::attempt(['login' => $request->get('inputPseudo'), 'password' => $request->get('inputPassword')]))
     	{
     		return redirect()->route('index');

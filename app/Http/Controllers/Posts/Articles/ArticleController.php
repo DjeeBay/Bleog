@@ -48,6 +48,10 @@ class ArticleController extends Controller
     
     public function getGallery()
     {
+    	if (Gate::denies('restrict-access', Auth::user()))
+    	{
+    		abort(403);
+    	}
     	$pics = ArticlesPics::all();
     	
     	return view('forms.posts.articles.picslist')->with('pics', $pics);

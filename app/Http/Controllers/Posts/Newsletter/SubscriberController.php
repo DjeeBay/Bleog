@@ -15,14 +15,15 @@ class SubscriberController extends Controller
     public function __construct()
     {
     	$this->middleware('auth');
-    	if (Gate::denies('restrict-access', Auth::user()))
-    	{
-    		abort(403);
-    	}
     }
 	
 	public function getList()
     {
+    	if (Gate::denies('restrict-access', Auth::user()))
+    	{
+    		abort(403);
+    	}
+    	
     	$subscribers = Newsletter::all();
     	return view('forms.newsletter.subscribers')->with('subscribers', $subscribers);
     }

@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Requests\Posts\Articles\ModifyArticleRequest;
 use App\Posts\Articles\Article;
 use App\Posts\Post;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
@@ -64,6 +66,10 @@ class ArticleController extends Controller
     
     public function getEditableArticle($id)
     {
+    	if (Gate::denies('restrict-access', Auth::user()))
+    	{
+    		abort(403);
+    	}
     	$queryArticle = $this->getModel($id);
     	
     	return view('forms.posts.articles.modify_body')->with('queryArticle', $queryArticle);
