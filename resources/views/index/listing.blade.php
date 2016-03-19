@@ -1,10 +1,8 @@
-@if(Auth::user()->admin == 1)
-@endif
-
 @foreach($months as $key => $postTab)
 <?php 
+setlocale(LC_ALL, 'fr_FR@euro', 'fr_FR', 'fra_fra');
 $timestamp = strtotime($key.'15');
-$date = strftime('%B %Y', $timestamp);
+$date = ucfirst(strftime('%B %Y', $timestamp));
 ?>
 <div class="panel panel-primary-green">
 	<div class="panel-heading-green">
