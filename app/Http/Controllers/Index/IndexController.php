@@ -210,6 +210,11 @@ class IndexController extends Controller
     	}
     	
     	$startEndTable = [];
+    	var_dump($limitTable);
+    	if (empty($limitTable))
+    	{
+    		$limitTable = [0 => 0, 1 => 0];
+    	}
     	array_push($startEndTable, $limitTable[0]);
     	array_push($startEndTable, end($limitTable));
     	
