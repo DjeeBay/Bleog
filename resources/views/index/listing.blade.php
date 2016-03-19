@@ -1,8 +1,8 @@
 @foreach($months as $key => $postTab)
 <?php 
-setlocale(LC_ALL, 'fr_FR@euro', 'fr_FR', 'fra_fra');
+setlocale(LC_ALL, 'fr_FR', 'fra_fra');
 $timestamp = strtotime($key.'15');
-$date = ucfirst(strftime('%B %Y', $timestamp));
+$date = utf8_encode(ucfirst(strftime('%B %Y', $timestamp)));
 ?>
 <div class="panel panel-primary-green">
 	<div class="panel-heading-green">
