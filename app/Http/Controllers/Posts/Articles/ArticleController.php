@@ -52,7 +52,7 @@ class ArticleController extends Controller
     	{
     		abort(403);
     	}
-    	$pics = ArticlesPics::all();
+    	$pics = ArticlesPics::all()->sortByDesc('created_at');
     	
     	return view('forms.posts.articles.picslist')->with('pics', $pics);
     }
