@@ -63,7 +63,7 @@
 				<img src="{{ URL::asset('pics/articles_pics/mini/'.$pic->picsname) }}" alt="{{ $pic->picsname }}">
 				<div class="caption">
 					<small>Lien à copier :</small>
-					<pre>{{ URL::asset('pics/articles_pics/mini/'.$pic->picsname) }}</pre>
+					<pre>/pics/articles_pics/mini/{{ $pic->picsname }}</pre>
 					{!! Form::checkbox('selectedPics', $pic->id) !!} <small>Cochez et cliquez sur Supprimer</small>
 					{!! Form::submit('Supprimer', ['class' => 'btn btn-danger btn-xs']) !!}
 				</div>
