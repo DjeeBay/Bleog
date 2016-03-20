@@ -21,3 +21,9 @@ body {
 .panel-primary-green {
 	border-color: #33B7A8;
 }
+
+.ellip {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
