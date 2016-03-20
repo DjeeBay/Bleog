@@ -11,14 +11,15 @@ class LoginController extends Controller
 {
     public function __construct()
     {
-    	if (Auth::check())
-    	{
-    		return redirect(route('index'));
-    	}
+    	
     }
     
     public function getLogin()
     {
+    	if (Auth::check())
+    	{
+    		return redirect()->route('index');
+    	}
     	if (isset($_COOKIE['username']) && isset($_COOKIE['_pwd']))
     	{
     		if (Auth::attempt(['login' => $_COOKIE['username'], 'password' => 'visiteur']))
