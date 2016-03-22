@@ -266,7 +266,7 @@ class IndexController extends Controller
 				Merci de vous être inscrit à la newsletter <a href="http://www.bleog.fr"><strong>Bleog.fr</strong></a><br><br>
 				Vous recevrez un email dès qu\'une nouvelle photo, vidéo ou qu\'un nouvel article paraît sur le site.<br><br>
 				<hr>
-				<small>Pour ne plus recevoir les newsletters, vous pouvez vous désinscrire en cliquant <a href="http://www.bleog.fr/unsubscribe_newsletter.php?id='.$uniqid.'">ici</a></small>';
+				<small>Pour ne plus recevoir les newsletters, vous pouvez vous désinscrire en cliquant <a href="http://www.bleog.fr/newsletter/unsuscribe/'.$uniqid.'">ici</a></small>';
     	mail($to, 'Newsletter Bleog.fr', $message, $headers);
     }
 }
