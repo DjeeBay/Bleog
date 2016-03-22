@@ -145,12 +145,8 @@ class IndexController extends Controller
     		$newSub->uniqid = $uniqid;
     		$newSub->save();
     		
-    		$headers  = 'MIME-Version: 1.0' . "\r\n";
-    		$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-    		$message = 'Un nouvel abonné vient de s\'inscrire à la newsletter.<br>
-				Voici son adresse : <strong>email</strong><br><br>
-						<a href="http://www.bleog.fr"><strong>Bleog.fr</strong></a>';
-    		mail('thebestjb@gmail.com', 'test', 'test2');
+    		$this->mailToAdmin($request->newsletter_email);
+    		$this->sendNewSubscriber($request->newsletter_email, $uniqid);
     		
     		return '<div class="alert alert-success alert-dismissible" role="alert">
     					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -238,5 +234,39 @@ class IndexController extends Controller
     	}
     	
     	$this->nbOfMonths = $totalMonths;
+    }
+    
+    /**
+     * Sends a mail to the admins to notify there is a new subscriber.
+     * 
+     * @param string $email
+     */
+    private function mailToAdmin($email)
+    {
+    	$headers  = 'MIME-Version: 1.0' . "\r\n";
+    	$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+    	$message = 'Un nouvel abonné vient de s\'inscrire à la newsletter.<br>
+				Voici son adresse : <strong>'.$email.'</strong><br><br>
+						<a href="http://www.bleog.fr"><strong>Bleog.fr</strong></a>';
+    	mail('thebestjb@gmail.com, djenyka@gmail.com', 'Nouvel abonné sur Bleog', $message, $headers);
+    }
+    
+    /**
+     * Sends a 'welcome' mail to the new subscriber.
+     * 
+     * @param string $email
+     * @param string $uniqid
+     */
+    private function sendNewSubscriber($email, $uniqid)
+    {
+    	$to = $email;
+    	$headers  = 'MIME-Version: 1.0' . "\r\n";
+    	$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+    	$message = '<h1>Bleog.fr</h1><br><br>
+				Merci de vous être inscrit à la newsletter <a href="http://www.bleog.fr"><strong>Bleog.fr</strong></a><br><br>
+				Vous recevrez un email dès qu\'une nouvelle photo, vidéo ou qu\'un nouvel article paraît sur le site.<br><br>
+				<hr>
+				<small>Pour ne plus recevoir les newsletters, vous pouvez vous désinscrire en cliquant <a href="http://www.bleog.fr/unsubscribe_newsletter.php?id='.$uniqid.'">ici</a></small>';
+    	mail($to, 'Newsletter Bleog.fr', $message, $headers);
     }
 }
