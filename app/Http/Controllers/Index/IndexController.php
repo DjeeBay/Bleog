@@ -145,17 +145,17 @@ class IndexController extends Controller
     		$newSub->uniqid = $uniqid;
     		$newSub->save();
     		
-    		return '<div class="alert alert-success alert-dismissible" role="alert">
-    					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    					<strong>Bravo !</strong> L\'email : <u>'.$request->newsletter_email.'</u> a bien été enregistrée. Vous recevrez un email à chaque nouveautée.
-						</div>';
-    		
     		$headers  = 'MIME-Version: 1.0' . "\r\n";
     		$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
     		$message = 'Un nouvel abonné vient de s\'inscrire à la newsletter.<br>
 				Voici son adresse : <strong>email</strong><br><br>
 						<a href="http://www.bleog.fr"><strong>Bleog.fr</strong></a>';
     		mail('thebestjb@gmail.com', 'test', 'test2');
+    		
+    		return '<div class="alert alert-success alert-dismissible" role="alert">
+    					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    					<strong>Bravo !</strong> L\'email : <u>'.$request->newsletter_email.'</u> a bien été enregistrée. Vous recevrez un email à chaque nouveautée.
+						</div>';
     	}
     }
     
