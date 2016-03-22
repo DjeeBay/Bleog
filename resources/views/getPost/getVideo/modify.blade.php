@@ -47,7 +47,7 @@
       <div class="modal-body">
       	<div class="form-group">
         	{!! Form::label('video_title', 'Titre : ') !!}
-        	{!! Form::text('video_title', $video->title, ['class' => 'form-control'])  !!}
+        	{!! Form::text('video_title', $video->title, ['class' => 'form-control', 'size' => '60'])  !!}
       	</div>
       </div>
       <div class="modal-footer">

@@ -27,3 +27,7 @@ body {
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
+
+.panel-default {
+	border-color: #0E84CE;
+}

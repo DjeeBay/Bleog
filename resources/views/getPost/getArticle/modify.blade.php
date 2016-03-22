@@ -47,7 +47,7 @@
       <div class="modal-body">
       	<div class="form-group">
         	{!! Form::label('article_title', 'Titre : ') !!}
-        	{!! Form::text('article_title', $article->title, ['class' => 'form-control'])  !!}
+        	{!! Form::text('article_title', $article->title, ['class' => 'form-control', 'size' => '60'])  !!}
       	</div>
       </div>
       <div class="modal-footer">
