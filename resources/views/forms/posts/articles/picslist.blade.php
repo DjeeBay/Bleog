@@ -6,10 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="{{ asset('favicon.ico') }}">
     {!! Html::style('css/bootstrap.min.css') !!}
-    {!! Html::style('css/navbar-static-top.css') !!}
     {!! Html::style('css/style.css') !!}
     <script src="{{ URL::asset('js/ie-emulation-modes-warning.js') }}"></script>
-    @yield('addInHead')
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -63,7 +61,12 @@
 				<img src="{{ URL::asset('pics/articles_pics/mini/'.$pic->picsname) }}" alt="{{ $pic->picsname }}">
 				<div class="caption">
 					<small>Lien à copier :</small>
-					<pre>/pics/articles_pics/mini/{{ $pic->picsname }}</pre>
+					<p>
+					{!! Form::text('link', '/pics/articles_pics/mini/'.$pic->picsname, ['id' => $pic->id, 'class' => 'form-control']) !!}
+					</p>
+					<p>
+						<input type="button" value="Copier l'adresse" class="{{ $pic->id }} btn btn-xs btn-primary" onclick=Copy({{ $pic->id }})>
+					</p>
 					{!! Form::checkbox('selectedPics', $pic->id) !!} <small>Cochez et cliquez sur Supprimer</small>
 					{!! Form::submit('Supprimer', ['class' => 'btn btn-danger btn-xs']) !!}
 				</div>
@@ -75,12 +78,11 @@
 	<script src="{{ URL::asset('js/ie10-viewport-bug-workaround.js') }}"></script>
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
-	<script src="{{ URL::asset('js/ekko-lightbox.min.js') }}"></script>
-	<script type="text/javascript">
-    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
-        event.preventDefault();
-        $(this).ekkoLightbox();
-    }); 
+    <script type="text/javascript">
+    function Copy(id){
+    	document.getElementById(id).select();
+    	document.execCommand('copy');
+    };
     </script>
     </body>
 </html>
