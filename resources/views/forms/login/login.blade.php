@@ -31,7 +31,7 @@
 				{!! Form::label('inputPseudo', 'Pseudo', ['class' => 'sr-only']) !!}
 				{!! Form::text('inputPseudo', null, ['class' => 'form-control', 'placeholder' => 'Pseudo', 'required', 'autofocus']) !!}
 				{!! Form::label('inputPassword', 'Mot de passe', ['class' => 'sr-only']) !!}
-				{!! Form::password('inputPassword', ['class' => 'form-control', 'placeholder' => 'Mot de passe', 'required' => true]) !!}
+				{!! Form::password('inputPassword', ['class' => 'form-control', 'placeholder' => 'Mot de passe', 'required']) !!}
 					<div class="checkbox">
 					{!! Form::checkbox('rememberMe', 'rememberMe', false) !!} Se souvenir de moi
 					</div>
