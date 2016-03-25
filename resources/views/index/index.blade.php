@@ -5,7 +5,7 @@
 @stop
 
 @section('top-content')
-	<img class="img-responsive" src="{{ URL::asset('css/eog.jpg') }}" style="margin-top: -19px;margin-bottom: -50px">
+	<img class="img-responsive" src="{{ URL::asset('css/eog.jpg') }}" alt="Eogan" style="margin-top: -19px;margin-bottom: -50px">
 @stop
 
 @section('content')
