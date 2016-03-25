@@ -29,7 +29,7 @@
 			{!! Form::open(['route' => 'login', 'class' => 'form-signin']) !!}
 				<h2 class="form-signin-heading">Connectez-vous</h2>
 				{!! Form::label('inputPseudo', 'Pseudo', ['class' => 'sr-only']) !!}
-				{!! Form::text('inputPseudo', null, ['class' => 'form-control', 'placeholder' => 'Pseudo', 'required' => true, 'autofocus' => true]) !!}
+				{!! Form::text('inputPseudo', null, ['class' => 'form-control', 'placeholder' => 'Pseudo', 'required', 'autofocus']) !!}
 				{!! Form::label('inputPassword', 'Mot de passe', ['class' => 'sr-only']) !!}
 				{!! Form::password('inputPassword', ['class' => 'form-control', 'placeholder' => 'Mot de passe', 'required' => true]) !!}
 					<div class="checkbox">
