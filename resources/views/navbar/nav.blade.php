@@ -27,7 +27,7 @@
 			@endif
               <li>
                 <a href="{{ url('article/25') }}">
-                <span class="glyphicon glyphicon-tree-conifer"></span> <b><font color="blue">Origine du prénom</font></b></a>
+                <span class="glyphicon glyphicon-tree-conifer"></span> <span class="nav-blue-link"> <b>Origine du prénom</b></span></a>
               </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

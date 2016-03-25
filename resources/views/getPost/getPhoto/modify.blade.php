@@ -12,12 +12,12 @@
 </div>
 
 <!-- Modals -->
-<div class="modal fade" id="dateEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="dateEdit" tabindex="-1" role="dialog" aria-labelledby="modalDateEdit">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modification de la date</h4>
+        <h4 class="modal-title" id="modalDateEdit">Modification de la date</h4>
       </div>
       {!! Form::open(array('route' => ['modifyPhoto', $photo->id], 'class' => 'form-inline')) !!}
       <div class="modal-body">
@@ -36,12 +36,12 @@
     </div>
   </div>
 </div>
-<div class="modal fade" id="descriptionEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="descriptionEdit" tabindex="-1" role="dialog" aria-labelledby="modalDescriptionEdit">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modification de la description</h4>
+        <h4 class="modal-title" id="modalDescriptionEdit">Modification de la description</h4>
       </div>
       {!! Form::open(['route' => ['modifyPhoto', $photo->id]]) !!}
       <div class="modal-body">
@@ -61,18 +61,18 @@
     </div>
   </div>
 </div>
-<div class="modal fade" id="photoEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="photoEdit" tabindex="-1" role="dialog" aria-labelledby="modalPhotoEdit">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modification de la photo</h4>
+        <h4 class="modal-title" id="modalPhotoEdit">Modification de la photo</h4>
       </div>
       {!! Form::open(['route' => ['modifyPhoto', $photo->id], 'files' => 'true']) !!}
       <div class="modal-body">
         <p>Photo actuelle :</p>
         <div>
-        	<img class="img-responsive" src="{{ URL::asset('pics/mini') }}/{{ $photo->picsname }}">
+        	<img class="img-responsive" alt="{{ $photo->picsname }}" src="{{ URL::asset('pics/mini') }}/{{ $photo->picsname }}">
         </div>
         <br /><br />
         	<div class="form-group">
@@ -88,12 +88,12 @@
     </div>
   </div>
 </div>
-<div class="modal fade" id="removeAll" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="removeAll" tabindex="-1" role="dialog" aria-labelledby="modalRemoveAll">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Supprimer la page</h4>
+        <h4 class="modal-title" id="modalRemoveAll">Supprimer la page</h4>
       </div>
       <div class="modal-body">
         <div class="alert alert-danger" role="alert"><b>Attention !</b> Êtes-vous sûr de vouloir supprimer définitivement cette page ?</div>
@@ -107,12 +107,12 @@
     </div>
   </div>
 </div>
-<div class="modal fade" id="supprDesc" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="supprDesc" tabindex="-1" role="dialog" aria-labelledby="modalSupprDesc">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Suppression de la description</h4>
+        <h4 class="modal-title" id="modalSupprDesc">Suppression de la description</h4>
       </div>
       {!! Form::open(['route' => ['modifyPhoto', $photo->id]]) !!}
       <div class="modal-body">

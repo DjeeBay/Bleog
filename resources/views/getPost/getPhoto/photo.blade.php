@@ -35,7 +35,7 @@
 			</div>
 		</div>
 	@endif
-	<a href="{{ URL::asset('pics') }}/{{ $photo->picsname }}"><img class="img-responsive" style="margin: auto;" src="{{ URL::asset('pics') }}/{{ $photo->picsname }}"></a>
+	<a href="{{ URL::asset('pics') }}/{{ $photo->picsname }}"><img class="img-responsive" alt="{{ $photo->picsname }}" style="margin: auto;" src="{{ URL::asset('pics') }}/{{ $photo->picsname }}"></a>
 @stop
 
 @endforeach

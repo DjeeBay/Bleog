@@ -31,3 +31,7 @@ body {
 .panel-default {
 	border-color: #0E84CE;
 }
+
+.nav-blue-link {
+	color: blue;
+}
