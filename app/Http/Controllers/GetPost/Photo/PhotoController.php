@@ -86,7 +86,7 @@ class PhotoController extends Controller
     		$picsName = $this->getFileName($id);
     		
     		$treatment = new PhotoTreatment();
-    		if ($treatment->fileTreatment($request->file('photo_file')))
+    		if ($treatment->fileTreatment($request->file('photo_file'), 'photo'))
     		{
     			Article_photo::where('id', $id)
     			->update(['picsname' => $treatment->getPicsname()]);
