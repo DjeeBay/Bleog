@@ -2,7 +2,7 @@
   
 Bleog is a PHP/MySQL website, blog-like, dedicated to my son Eogan born the 27th November 2015.  
 The site is reserved to the family who can access to the front page and follow month by month his adventures.
-Bootstrap is the main design tool used. This project is the online version and is a big improvement compare to the old one ([here](https://bitbucket.org/TheBestJB/bleog)).
+Bootstrap is the main design tool used. This project is the online version and is a big improvement compared to the old one ([here](https://bitbucket.org/TheBestJB/bleog)).
 Particularly because I've used Laravel 5.2 to rebuild the entire website.    
   
 ### **Current version allows to :**   
@@ -18,6 +18,6 @@ Particularly because I've used Laravel 5.2 to rebuild the entire website.
 
 ### **Next features :**   
   
-*  First of all, this site is a little piece a bigger system about a family tree future project. So lots of features are incoming.  
+*  First of all, this site is a little piece of a bigger system about a family tree future project. So lots of features are incoming.  
 *  Allow searches.  
-*  Allow to sort.  
+*  Allow to sort.
