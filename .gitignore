@@ -8,3 +8,5 @@ Homestead.json
 .env
 .project
 .settings/
+.idea/
+public/favicon-old.ico
