@@ -8,7 +8,7 @@ class ModifyPhotoRequest extends AddPhotoRequest
 		return [
 				'photo_date' => 'date_format:Y-m-d',
 				'description' => 'string',
-				'photo_file' => 'mimes:jpeg,png|max:2080'
+				'photo_file' => 'mimes:jpeg,png'/*|max:2080'*/
 		];
 	}
 	

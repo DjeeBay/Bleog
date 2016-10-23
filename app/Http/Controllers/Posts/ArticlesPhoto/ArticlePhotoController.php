@@ -9,6 +9,7 @@ use App\Posts\ArticlesPhoto\Article_photo;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Posts\PostController;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Input;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class ArticlePhotoController extends Controller
@@ -29,8 +30,8 @@ class ArticlePhotoController extends Controller
     
     public function postForm(AddPhotoRequest $request)
     {
-    	$treatment = new PhotoTreatment();
-    	if ($treatment->fileTreatment($request->file('photo_file'), 'photo'))
+        $treatment = new PhotoTreatment();
+    	if ($treatment->fileTreatmentWithIntervention($request->file('photo_file'), 'photo'))
     	{
     		$newPhoto = new Article_photo([
     				'title' => $request->photo_description,

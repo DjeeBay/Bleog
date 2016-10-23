@@ -77,7 +77,7 @@ class ArticleController extends Controller
     		return redirect($request->server('HTTP_REFERER'));
     	}
     	$treatment = new PhotoTreatment();
-    	if ($treatment->fileTreatment($request->file('photo_file'), 'articles_pic'))
+    	if ($treatment->fileTreatmentWithIntervention($request->file('photo_file'), 'articles_pic'))
     	{
     		$newPhoto = new ArticlesPics([
     				'picsname' => $treatment->getPicsname()
