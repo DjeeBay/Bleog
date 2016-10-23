@@ -62,8 +62,14 @@ class ArticleController extends Controller
     	if ($request->has('selectedPics'))
     	{
     		$pic = ArticlesPics::find($request->get('selectedPics'));
-    		unlink(public_path('/pics/articles_pics/'.$pic->picsname));
-    		unlink(public_path('/pics/articles_pics/mini/'.$pic->picsname));
+    		if (file_exists(public_path('/pics/articles_pics/'.$pic->picsname)))
+    		{
+    		    unlink(public_path('/pics/articles_pics/'.$pic->picsname));
+            }
+            if (file_exists(public_path('/pics/articles_pics/'.$pic->picsname)))
+            {
+                unlink(public_path('/pics/articles_pics/mini/'.$pic->picsname));
+            }
     		$pic->delete();
     		return redirect($request->server('HTTP_REFERER'))->with('success', 'La photo a bien été supprimée !');
     	}
