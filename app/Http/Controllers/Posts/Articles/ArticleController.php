@@ -66,7 +66,7 @@ class ArticleController extends Controller
     		{
     		    unlink(public_path('/pics/articles_pics/'.$pic->picsname));
             }
-            if (file_exists(public_path('/pics/articles_pics/'.$pic->picsname)))
+            if (file_exists(public_path('/pics/articles_pics/mini/'.$pic->picsname)))
             {
                 unlink(public_path('/pics/articles_pics/mini/'.$pic->picsname));
             }
