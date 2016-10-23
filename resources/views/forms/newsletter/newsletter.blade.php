@@ -23,25 +23,28 @@
 			{!! Form::textarea('newsletter_body', null) !!}
 		</div>
 		{!! Form::submit('Envoyer', ['class' => 'btn btn-primary']) !!}
-	{!! Form::close() !!}
-<br>
-	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
-			<table class="table table-hover table-striped">
-			<tr class="warning">
-				<td><b>Adresses des inscrits</b></td>
-				<td>
-					<a href="{{ route('subscribers') }}">
-					<button type="submit" class="btn btn-xs btn-danger">Gérer les inscrits</button>
-					</a>
-				</td>
-			</tr>
-			@foreach($subscribers as $subscriber)
-				<tr class="active"><td colspan="2">{{ $subscriber->email_address }}</td></tr>
-			@endforeach
-			</table>
+
+		<br>
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<table class="table table-hover table-striped">
+				<tr class="warning">
+					<td><b>Adresses des inscrits</b></td>
+					<td>
+						<a href="{{ route('subscribers') }}">
+						<button type="submit" class="btn btn-xs btn-danger">Gérer les inscrits</button>
+						</a>
+					</td>
+				</tr>
+				@foreach($subscribers as $subscriber)
+					<tr class="active"><td colspan="2">
+							{!! Form::checkbox('newsletter_subs[]', $subscriber->id, true) !!} {{ $subscriber->email_address }}
+						</td></tr>
+				@endforeach
+				</table>
+			</div>
 		</div>
-	</div>
+	{!! Form::close() !!}
 @stop
 
 @section('addScript')

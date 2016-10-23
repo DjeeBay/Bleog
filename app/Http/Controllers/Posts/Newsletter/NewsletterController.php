@@ -36,7 +36,13 @@ class NewsletterController extends Controller
      */
     public function postForm(NewsletterRequest $request)
     {
-    	$subs = Newsletter::all();
+    	//$subs = Newsletter::all();
+        $subs = [];
+        foreach ($request->input('newsletter_subs') as $sub)
+        {
+            array_push($subs, Newsletter::where('id', $sub)->first(['email_address']));
+        }
+
     	foreach ($subs as $sub)
     	{
     		$to = $sub->email_address;
