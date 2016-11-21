@@ -1,3 +1,7 @@
+<?php
+$navCtrl = new \App\Http\Controllers\NavController();
+$years = $navCtrl::getYears();
+?>
 <nav class="navbar navbar-default navbar-static-top">
 	<div class="container">
 		<div class="navbar-header">
@@ -25,6 +29,20 @@
                   </ul>
               </li>
 			@endif
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <span class="glyphicon glyphicon-calendar"></span> Années <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <?php
+                    foreach ($years as $year)
+                    {?>
+                        <li><a href="{{URL::to('/an/'.$year->year)}}">{{$year->year}}</a></li>
+                    <?php
+                    }
+                    ?>
+                </ul>
+            </li>
               <li>
                 <a href="{{ url('article/25') }}">
                 <span class="glyphicon glyphicon-tree-conifer"></span> <span class="nav-blue-link"> <b>Origine du prénom</b></span></a>

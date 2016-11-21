@@ -32,7 +32,7 @@ class IndexController extends Controller
 	/**
 	 * Queries all posts and puts them in an array
 	 * then returns the view to list the posts (monthly)
-	 * 
+	 *
 	 * @param Request $request
 	 * @return view
 	 */

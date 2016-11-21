@@ -55,6 +55,12 @@ Route::group(['middleware' => 'web'], function () {
     		'as' => 'newMail',
     		'uses' => 'Index\IndexController@postNewsletter'
     ]);
+
+    Route::get('/an/{id}', [
+        'as' => 'year',
+        'middleware' => 'auth',
+        'uses' => 'Year\YearController@get'
+    ]);
     
     // Add pages
     Route::get('/add/photo', [

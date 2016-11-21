@@ -1,5 +1,5 @@
 @foreach($months as $key => $postTab)
-<?php 
+<?php
 setlocale(LC_ALL, 'fr_FR', 'fra_fra');
 $timestamp = strtotime($key.'15');
 $date = utf8_encode(ucfirst(strftime('%B %Y', $timestamp)));
@@ -15,11 +15,11 @@ $date = utf8_encode(ucfirst(strftime('%B %Y', $timestamp)));
 			@if($post->type == 'article')
 				@include('posts.articles.article')
 			@endif
-	
+
 			@if($post->type == 'photo')
 				@include('posts.articles_photo.article_photo')
 			@endif
-	
+
 			@if($post->type == 'video')
 				@include('posts.articles_video.article_video')
 			@endif
