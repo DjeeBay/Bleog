@@ -27,6 +27,13 @@ class LoginController extends Controller
     			return redirect()->route('index');
     		}
     	}
+    	if (isset($_COOKIE['username']) && isset($_COOKIE['_token_user']))
+    	{
+    		if (Auth::attempt(['login' => $_COOKIE['username'], 'remember_token' => $_COOKIE['_token_user']]))
+    		{
+    			return redirect()->route('index');
+    		}
+    	}
     	return view('forms.login.login');
     }
     
@@ -38,6 +45,11 @@ class LoginController extends Controller
     		{
     			setcookie('username', Auth::user()->login, time() + 3600*24*365*10, null, null, false, true);
     			setcookie('_pwd', 'visiteur', time() + 3600*24*365*10, null, null, false, true);
+    		}
+    		elseif ($request->has('rememberMe') && $request->rememberMe == 'rememberMe' && $request->inputPseudo != 'visiteur')
+    		{
+    			setcookie('username', Auth::user()->login, time() + 3600*24*365*10, null, null, false, true);
+    			setcookie('_token_user', Auth::user()->getRememberToken(), time() + 3600*24*365*10, null, null, false, true);
     		}
     		return redirect()->route('index');
     	}
