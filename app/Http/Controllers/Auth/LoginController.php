@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
 use App\Http\Requests\Login\LoginRequest;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
@@ -29,9 +32,19 @@ class LoginController extends Controller
     	}
     	if (isset($_COOKIE['username']) && isset($_COOKIE['_token_user']))
     	{
-    		if (Auth::attempt(['login' => $_COOKIE['username'], 'remember_token' => $_COOKIE['_token_user']]))
+
+    	    $isOK = DB::table('users')
+                ->select('id', 'login')
+                ->where([
+                    ['login', '=', $_COOKIE['username']],
+                    ['remember_token', '=', $_COOKIE['_token_user']],
+                ])->first();
+    	    //if (Auth::attempt(['login' => $_COOKIE['username'], /*'remember_token' => $_COOKIE['_token_user']*/'password' => ]))
+            if ($isOK)
     		{
-    			return redirect()->route('index');
+    			$user = User::find($isOK->id);
+    		    Auth::login($user);
+    		    return redirect()->route('index');
     		}
     	}
     	return view('forms.login.login');
