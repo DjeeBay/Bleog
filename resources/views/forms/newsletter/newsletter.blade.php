@@ -32,7 +32,7 @@
 					<td><b>Adresses des inscrits</b></td>
 					<td>
 						<a href="{{ route('subscribers') }}">
-						<button type="submit" class="btn btn-xs btn-danger">Gérer les inscrits</button>
+						<button type="button" class="btn btn-xs btn-danger">Gérer les inscrits</button>
 						</a>
 					</td>
 				</tr>
