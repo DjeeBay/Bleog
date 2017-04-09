@@ -26,6 +26,7 @@ $years = $navCtrl::getYears();
                     <li><a href="{{ route('addVideo') }}"><span class="glyphicon glyphicon-film"></span> Ajout vidéos</a></li>
                     <li><a href="{{ route('addArticle') }}"><span class="glyphicon glyphicon-pencil"></span> Ajout articles</a></li>
                     <li><a href="{{ route('newsletter') }}"><span class="glyphicon glyphicon-envelope"></span> Envoi newsletters</a></li>
+                    <li><a href="{{ route('memories') }}"><span class="glyphicon glyphicon-cloud"></span> Carnet mémoires</a></li>
                   </ul>
               </li>
 			@endif
