@@ -117,6 +117,16 @@ Route::group(['middleware' => 'web'], function () {
     		'as' => 'postNewsletter',
     		'uses' => 'Posts\Newsletter\NewsletterController@postForm'
     ]);
+
+    Route::get('/memories', [
+    		'as' => 'memories',
+    		'uses' => 'Posts\Memories\MemoriesController@getForm'
+    ]);
+
+    Route::post('/memories', [
+    		'as' => 'postMemories',
+    		'uses' => 'Posts\Memories\MemoriesController@postForm'
+    ]);
     
     // Displaying and modifying single post.
     Route::get('/photo/{id}', [

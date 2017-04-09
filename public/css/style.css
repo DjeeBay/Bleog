@@ -4,6 +4,8 @@ body {
     background-attachment: fixed;
 }
 
+.bleog-blue {color: #3ea4e2;}
+
 .jumbotron p {
 	font-size: 14px;
 }
@@ -34,4 +36,41 @@ body {
 
 .nav-blue-link {
 	color: blue;
+}
+
+#memories-list {
+	padding: 20px;
+	background-color: white;
+	border: 1px solid #3ea4e2;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+}
+#memories-list > div {
+	border-bottom: 1px solid #3ea4e2;
+	padding: 15px;
+}
+#memories-list > div:nth-child(even) > div {
+	width: 50%;
+	float: right;
+}
+#memories-list > div:nth-child(odd) > div {
+	width: 50%;
+	float: left;
+}
+
+#memories-list > div:last-child {
+	border-bottom: none;
+}
+
+@media only screen and (max-width: 768px) {
+
+	#memories-list > div:nth-child(even) > div {
+		width: 100%;
+		float: none;
+	}
+	#memories-list > div:nth-child(odd) > div {
+		width: 100%;
+		float: none;
+	}
 }
