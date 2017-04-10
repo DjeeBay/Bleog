@@ -25,7 +25,7 @@ class MemoriesController extends Controller
             abort(403);
         }
 
-        setlocale(LC_TIME, 'French');
+        setlocale(LC_TIME, 'fr', 'fr_FR.UTF-8');
         $memories = Memories::orderBy('event_date', 'desc')->simplePaginate(5);
 
         return view('forms.memories.memories')->with('memories', $memories);
@@ -40,7 +40,7 @@ class MemoriesController extends Controller
 
         $memory->save();
 
-        setlocale(LC_TIME, 'French');
+        setlocale(LC_TIME, 'fr', 'fr_FR.UTF-8');
         $memory->formatted_event_date = $memory->event_date->formatLocalized('%A %d %B %Y');
 
         $memory->position = $this->getMemoryPosition($memory->id);
