@@ -6,15 +6,17 @@ use App\Posts\Memories;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 class MemoriesController extends Controller
 {
+    protected $nbToDisplay = 5;
+
     public function __construct()
     {
+        setlocale(LC_TIME, 'fr', 'fr_FR.UTF-8');
         $this->middleware('auth');
     }
 
@@ -26,7 +28,7 @@ class MemoriesController extends Controller
         }
 
         setlocale(LC_TIME, 'fr', 'fr_FR.UTF-8');
-        $memories = Memories::orderBy('event_date', 'desc')->simplePaginate(5);
+        $memories = Memories::orderBy('event_date', 'desc')->simplePaginate($this->nbToDisplay);
 
         return view('forms.memories.memories')->with('memories', $memories);
     }
@@ -49,9 +51,21 @@ class MemoriesController extends Controller
         return response()->json(['data' => $memory]);
     }
 
+    public function deleteMemory(Request $request)
+    {
+        $dataToReturn = array();
+        $dataToReturn['position'] = $this->getMemoryPosition($request->json('id'));
+        $dataToReturn['formatted_event_date'] = Carbon::createFromFormat('Y-m-d h:i:s', $request->json('event_date'))->formatLocalized('%A %d %B %Y');
+
+        $memory = Memories::find($request->json('id'));
+        $memory->delete();
+
+        return response()->json(['data' => $dataToReturn]);
+    }
+
     private function getMemoryPosition($memoryID)
     {
-        $memories = Memories::orderBy('event_date', 'desc')->simplePaginate(5);
+        $memories = Memories::orderBy('event_date', 'desc')->simplePaginate($this->nbToDisplay);
 
         $position = -1;
 

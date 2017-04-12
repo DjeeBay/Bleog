@@ -21,18 +21,56 @@ myForm.onsubmit = function(e) {
             addLastInsertedMemory(res.data);
 
             var successDiv = document.getElementById('addedWithSuccess');
-            successDiv.classList.remove('hidden');
+            successDiv.className = '';
+            successDiv.className += ' alert alert-dismissible alert-success';
 
             var successText = document.getElementById('addedText');
             successText.innerHTML = 'Évènement du <b>'+res.data.formatted_event_date+'</b> ajouté avec succès !';
         }
     };
+};
 
-    function addLastInsertedMemory(memory) {
+function deleteMemory(memory) {
+
+    var divsList = document.querySelectorAll('#memories-list > div');
+
+    var token = document.getElementById('_token').value;
+
+    memory._token = token;
+
+    var http = new XMLHttpRequest();
+    http.open('POST', 'memories/delete', true);
+
+    http.setRequestHeader('X-XSRF-TOKEN', token);
+    http.setRequestHeader("Content-Type", "application/json");
+
+    http.send(JSON.stringify(memory));
+
+    http.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+            var response = this.responseText;
+            console.log(JSON.parse(response));
+            var res = JSON.parse(response);
+            console.log(res.data);
+
+            divsList[res.data.position].remove();
+
+            var successDiv = document.getElementById('addedWithSuccess');
+            successDiv.className = '';
+            successDiv.className += 'alert alert-dismissible alert-warning';
+
+            var successText = document.getElementById('addedText');
+            successText.innerHTML = 'L\'évènement du <b>'+res.data.formatted_event_date+'</b> a bien été supprimé !';
+        }
+    };
+}
+
+function addLastInsertedMemory(memory) {
+    if (memory.position !== -1) {
         var memoriesList = document.getElementById('memories-list');
 
         var parentDiv = document.createElement('div');
-        parentDiv.className = 'clearfix';
+        parentDiv.className = 'clearfix handHover p-relative memory-item';
 
         var secondDiv = document.createElement('div');
         parentDiv.appendChild(secondDiv);
@@ -50,10 +88,19 @@ myForm.onsubmit = function(e) {
         secondDiv.appendChild(dateDiv);
         secondDiv.appendChild(descriptionDiv);
 
+        var spanDeleteParent = document.createElement('span');
+        spanDeleteParent.className = 'memory-cancel';
 
-        // memoriesList.appendChild(parentDiv);
-        if (memory.position !== -1) {
-            memoriesList.insertBefore(parentDiv, memoriesList.children[memory.position]);
-        }
+        var spanDeleteChild = document.createElement('span');
+        spanDeleteChild.className = 'glyphicon glyphicon-fire';
+        spanDeleteChild.onclick = function () {
+            deleteMemory(memory);
+        };
+
+        spanDeleteParent.appendChild(spanDeleteChild);
+
+        parentDiv.appendChild(spanDeleteParent);
+
+        memoriesList.insertBefore(parentDiv, memoriesList.children[memory.position]);
     }
-};
+}
