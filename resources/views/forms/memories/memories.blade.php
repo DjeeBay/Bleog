@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-    <div id="addedWithSuccess" class="alert alert-success alert-dismissible hidden" role="alert">
+    <div id="addedWithSuccess" class="hidden" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <span class="glyphicon glyphicon-ok-circle">&nbsp;</span><span id="addedText"></span>
     </div>
@@ -32,11 +32,14 @@
     <div>
         <div id="memories-list">
             @foreach($memories as $memory)
-                <div class="clearfix">
+                <div class="clearfix handHover p-relative memory-item">
                     <div>
                         <div><b>{{$memory->event_date->formatLocalized('%A %d %B %Y')}}</b></div>
                         <div><span>{{$memory->description}}</span></div>
                     </div>
+                    <span class="memory-cancel">
+                        <span class="glyphicon glyphicon-fire" onclick="deleteMemory({{ $memory }})"></span>
+                    </span>
                 </div>
             @endforeach
         </div>

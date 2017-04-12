@@ -127,6 +127,11 @@ Route::group(['middleware' => 'web'], function () {
     		'as' => 'postMemories',
     		'uses' => 'Posts\Memories\MemoriesController@postForm'
     ]);
+
+    Route::post('/memories/delete', [
+    		'as' => 'deleteMemory',
+    		'uses' => 'Posts\Memories\MemoriesController@deleteMemory'
+    ]);
     
     // Displaying and modifying single post.
     Route::get('/photo/{id}', [

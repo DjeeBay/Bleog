@@ -6,6 +6,16 @@ body {
 
 .bleog-blue {color: #3ea4e2;}
 
+.button-without-decoration {
+	border: none;
+	background-color: initial;
+	outline-style: none;
+}
+
+.handHover:hover {
+	cursor: pointer;
+}
+
 .jumbotron p {
 	font-size: 14px;
 }
@@ -34,6 +44,9 @@ body {
 	border-color: #0E84CE;
 }
 
+.p-relative {position: relative;}
+.p-absolute {position: absolute;}
+
 .nav-blue-link {
 	color: blue;
 }
@@ -61,6 +74,26 @@ body {
 
 #memories-list > div:last-child {
 	border-bottom: none;
+}
+
+.memory-cancel {
+	position: absolute;
+	top: 15px;
+	right: 0;
+	color: orange;
+	opacity: 0;
+	visibility: hidden;
+	-webkit-transition: opacity 600ms, visibility 600ms;
+	transition: opacity 600ms, visibility 600ms;
+}
+
+.memory-cancel:hover {
+	color: red;
+}
+
+.memory-item:hover .memory-cancel {
+	visibility: visible;
+	opacity: 1;
 }
 
 @media only screen and (max-width: 768px) {
