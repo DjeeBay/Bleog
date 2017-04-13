@@ -44,7 +44,7 @@
             @endforeach
         </div>
     </div>
-    <div>
+    <div id="pagination">
         {{$memories->links()}}
     </div>
 @stop
