@@ -47,6 +47,8 @@ class MemoriesController extends Controller
 
         $memory->position = $this->getMemoryPosition($memory->id);
 
+        $memory->totalMemories = Memories::count();
+
 
         return response()->json(['data' => $memory]);
     }
@@ -56,6 +58,18 @@ class MemoriesController extends Controller
         $dataToReturn = array();
         $dataToReturn['position'] = $this->getMemoryPosition($request->json('id'));
         $dataToReturn['formatted_event_date'] = Carbon::createFromFormat('Y-m-d h:i:s', $request->json('event_date'))->formatLocalized('%A %d %B %Y');
+
+        $memories = new Memories();
+        $nbMemories = $memories->count();
+
+        if ($nbMemories > $this->nbToDisplay) {
+            $memoryToDisplay = $memories->orderBy('event_date', 'desc')->skip($this->nbToDisplay)->take(1)->first();
+            $memoryToDisplay->position = $this->nbToDisplay -1;
+            $memoryToDisplay->formatted_event_date = $memoryToDisplay->event_date->formatLocalized('%A %d %B %Y');
+
+            $dataToReturn['memoryToDisplay'] = $memoryToDisplay;
+            $dataToReturn['memoryToDisplay']['totalMemories'] = $nbMemories;
+        }
 
         $memory = Memories::find($request->json('id'));
         $memory->delete();

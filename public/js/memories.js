@@ -2,9 +2,8 @@ var myForm = document.forms['memoriesForm'];
 
 myForm.onsubmit = function(e) {
     e.preventDefault();
-    console.log(myForm);
 
-    var urlToPost = this.getAttribute('action');;
+    var urlToPost = this.getAttribute('action');
 
     var data = new FormData(myForm);
 
@@ -16,9 +15,10 @@ myForm.onsubmit = function(e) {
     http.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
             var response = this.responseText;
-            console.log(JSON.parse(response));
             var res = JSON.parse(response);
-            addLastInsertedMemory(res.data);
+            if (res.data.position !== -1) {
+                addLastInsertedMemory(res.data);
+            }
 
             var successDiv = document.getElementById('addedWithSuccess');
             successDiv.className = '';
@@ -49,11 +49,13 @@ function deleteMemory(memory) {
     http.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
             var response = this.responseText;
-            console.log(JSON.parse(response));
             var res = JSON.parse(response);
-            console.log(res.data);
 
             divsList[res.data.position].remove();
+
+            if (res.data.memoryToDisplay) {
+                addLastInsertedMemory(res.data.memoryToDisplay);
+            }
 
             var successDiv = document.getElementById('addedWithSuccess');
             successDiv.className = '';
@@ -102,5 +104,23 @@ function addLastInsertedMemory(memory) {
         parentDiv.appendChild(spanDeleteParent);
 
         memoriesList.insertBefore(parentDiv, memoriesList.children[memory.position]);
+
+        var divsList = document.querySelectorAll('#memories-list > div');
+        console.log(divsList.length);
+        if (divsList.length > 5) {
+            divsList[5].remove();
+        }
+
+        paginationManager(memory.totalMemories);
+        console.log(memory);
     }
+}
+
+function paginationManager(totalMemories) {
+    var paginationDiv = document.getElementById('pagination');
+
+    console.log(paginationDiv);
+    console.log(totalMemories);
+
+    // if (totalMemories > 5)
 }
