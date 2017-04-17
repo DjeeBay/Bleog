@@ -107,8 +107,8 @@ function addLastInsertedMemory(memory) {
 
         var divsList = document.querySelectorAll('#memories-list > div');
         console.log(divsList.length);
-        if (divsList.length > 5) {
-            divsList[5].remove();
+        if (divsList.length > 20) {
+            divsList[20].remove();
         }
 
         paginationManager(memory.totalMemories);

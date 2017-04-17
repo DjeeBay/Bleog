@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Gate;
 
 class MemoriesController extends Controller
 {
-    protected $nbToDisplay = 5;
+    protected $nbToDisplay = 20;
 
     public function __construct()
     {
