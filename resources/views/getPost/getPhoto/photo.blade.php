@@ -35,6 +35,7 @@
 			</div>
 		</div>
 	@endif
+	<a href="{{ URL::asset('pics') }}/{{ $photo->picsname }}" download><button type="button" class="btn btn-primary">Télécharger l'image</button></a><br><br>
 	<a href="{{ URL::asset('pics') }}/{{ $photo->picsname }}"><img class="img-responsive" alt="{{ $photo->picsname }}" style="margin: auto;" src="{{ URL::asset('pics') }}/{{ $photo->picsname }}"></a>
 @stop
 

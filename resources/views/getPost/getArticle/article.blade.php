@@ -44,7 +44,21 @@
 	<script type="text/javascript">
     $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
         event.preventDefault();
-        $(this).ekkoLightbox();
+        $(this).ekkoLightbox({
+            onShow: function(elem) {
+                var html = '<span id="dlPic"></span>';
+                $(elem.currentTarget).find('.modal-header').append(html);
+
+            },
+            onNavigate: function(direction, itemIndex) {
+
+            },
+			onContentLoaded: function(e) {
+                var img = $('.ekko-lightbox-container').find('img').attr('src');
+                var html = '<a href="'+img+'" download><button type="button" class="btn btn-primary" style="">Télécharger l\'image</button></a>';
+                $('#dlPic').html(html);
+			}
+		});
     }); 
     </script>
 @stop
