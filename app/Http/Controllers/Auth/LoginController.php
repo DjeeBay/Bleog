@@ -68,4 +68,16 @@ class LoginController extends Controller
     	}
     	return redirect()->route('login')->with('fail', 'Erreur, mauvaise combinaison Pseudo / Mot de passe !');
     }
+
+    public function logout(Request $request)
+    {
+        if (isset($_COOKIE['username']) && isset($_COOKIE['_pwd']))
+        {
+            setcookie('username', '', time() - 10);
+            setcookie('_pwd', '', time() - 10);
+        }
+
+        Auth::logout();
+        return redirect()->route('login');
+    }
 }

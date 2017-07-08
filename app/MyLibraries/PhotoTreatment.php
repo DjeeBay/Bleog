@@ -6,8 +6,20 @@ use Symfony\Component\HttpFoundation\File\File;
 class PhotoTreatment
 {
 	protected $picsname;
+
+	protected $directories = [
+        '/pics/',
+        '/pics/mini/',
+        '/pics/articles_pics/',
+        '/pics/articles_pics/mini/',
+    ];
 	
-	public function fileTreatment(File $file, $type)
+	public function __construct()
+    {
+        $this->checkDirectories();
+    }
+
+    public function fileTreatment(File $file, $type)
 	{
 		$valid_ext = array('jpg', 'jpeg', 'png');
 		$real_ext = strtolower((substr(strrchr($file->getClientOriginalName(), '.'), 1)));
@@ -132,4 +144,13 @@ class PhotoTreatment
 	{
 		return $this->picsname;
 	}
+
+    private function checkDirectories()
+    {
+        foreach ($this->directories as $directory) {
+            if (!file_exists(public_path($directory))) {
+                mkdir(public_path($directory));
+            }
+        }
+    }
 }

@@ -22,6 +22,7 @@ class CreatePostsTable extends Migration
             		->onDelete('restrict')
             		->onUpdate('restrict');
             $table->integer('type_key_id')->unsigned();
+            $table->timestamp('defined_date')->onUpdate(DB::raw('CURRENT_TIMESTAMP'))->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
         });
     }
