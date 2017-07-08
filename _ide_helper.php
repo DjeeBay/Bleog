@@ -1406,7 +1406,7 @@ namespace Illuminate\Support\Facades {
          *
          * @return void 
          * @static 
-         */ 
+         */
         public static function bootstrap()
         {
             //Method inherited from \Illuminate\Foundation\Console\Kernel            
