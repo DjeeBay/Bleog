@@ -29,7 +29,7 @@ class ArticleController extends Controller
     public function modifyArticle(ModifyArticleRequest $request, $id)
     {
     	// Modify the date.
-    	if ($request->has('article_date'))
+    	if ($request->filled('article_date'))
     	{
     		Post::where('type', 'article')
     		->where('type_key_id', $id)
@@ -39,7 +39,7 @@ class ArticleController extends Controller
     	}
     	
     	// Modify the title.
-    	elseif ($request->has('article_title'))
+    	elseif ($request->filled('article_title'))
     	{
     		$newTitle = $request->article_title;
     		Article::where('id', $id)
@@ -49,7 +49,7 @@ class ArticleController extends Controller
     	}
     	
     	// Delete the post.
-    	elseif ($request->has('delThePost'))
+    	elseif ($request->filled('delThePost'))
     	{
     		Article::where('id', $id)
     		->delete();

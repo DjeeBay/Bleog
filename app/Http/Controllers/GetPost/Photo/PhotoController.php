@@ -35,7 +35,7 @@ class PhotoController extends Controller
     public function modifyPhoto(ModifyPhotoRequest $request, $id)
     {
     	// Modify the date.
-    	if ($request->has('photo_date'))
+    	if ($request->filled('photo_date'))
     	{
     		Post::where('type', 'photo')
     		->where('type_key_id', $id)
@@ -45,7 +45,7 @@ class PhotoController extends Controller
     	}
     	
     	// Modify the title.
-    	elseif ($request->has('description'))
+    	elseif ($request->filled('description'))
     	{
     		$newTitle = $request->description;
     		Article_photo::where('id', $id)
@@ -55,7 +55,7 @@ class PhotoController extends Controller
     	}
     	
     	// Delete the title.
-    	elseif ($request->has('delDescr'))
+    	elseif ($request->filled('delDescr'))
     	{
     		Article_photo::where('id', $id)
     		->update(['title' => null]);
@@ -64,7 +64,7 @@ class PhotoController extends Controller
     	}
     	
     	// Delete the post with the pics.
-    	elseif ($request->has('delThePost'))
+    	elseif ($request->filled('delThePost'))
     	{
     		$picsName = $this->getFileName($id);
     		
