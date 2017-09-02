@@ -59,7 +59,7 @@ class ArticleController extends Controller
     
     public function delGallery(Request $request)
     {
-    	if ($request->has('selectedPics'))
+    	if ($request->filled('selectedPics'))
     	{
     		$pic = ArticlesPics::find($request->get('selectedPics'));
     		if (file_exists(public_path('/pics/articles_pics/'.$pic->picsname)))

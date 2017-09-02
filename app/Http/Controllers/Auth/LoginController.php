@@ -54,12 +54,12 @@ class LoginController extends Controller
     {
     	if (Auth::attempt(['login' => $request->get('inputPseudo'), 'password' => $request->get('inputPassword')]))
     	{
-    		if ($request->has('rememberMe') && $request->rememberMe == 'rememberMe' && $request->inputPseudo == 'visiteur')
+    		if ($request->filled('rememberMe') && $request->rememberMe == 'rememberMe' && $request->inputPseudo == 'visiteur')
     		{
     			setcookie('username', Auth::user()->login, time() + 3600*24*365*10, null, null, false, true);
     			setcookie('_pwd', 'visiteur', time() + 3600*24*365*10, null, null, false, true);
     		}
-    		elseif ($request->has('rememberMe') && $request->rememberMe == 'rememberMe' && $request->inputPseudo != 'visiteur')
+    		elseif ($request->filled('rememberMe') && $request->rememberMe == 'rememberMe' && $request->inputPseudo != 'visiteur')
     		{
     			setcookie('username', Auth::user()->login, time() + 3600*24*365*10, null, null, false, true);
     			setcookie('_token_user', Auth::user()->getRememberToken(), time() + 3600*24*365*10, null, null, false, true);
