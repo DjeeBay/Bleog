@@ -36,7 +36,7 @@ class VideoController extends Controller
     public function modifyVideo(ModifyVideoRequest $request, $id)
     {
     	// Modify the date.
-    	if ($request->has('video_date'))
+    	if ($request->filled('video_date'))
     	{
     		Post::where('type', 'video')
     		->where('type_key_id', $id)
@@ -46,7 +46,7 @@ class VideoController extends Controller
     	}
     	 
     	// Modify the title.
-    	elseif ($request->has('video_title'))
+    	elseif ($request->filled('video_title'))
     	{
     		$newTitle = $request->video_title;
     		Article_video::where('id', $id)
@@ -56,7 +56,7 @@ class VideoController extends Controller
     	}
     	 
     	// Delete the post.
-    	elseif ($request->has('delThePost'))
+    	elseif ($request->filled('delThePost'))
     	{
     		Article_video::where('id', $id)
     		->delete();
@@ -69,7 +69,7 @@ class VideoController extends Controller
     	}
     	 
     	// Modify the link of the video.
-    	elseif ($request->has('video_link'))
+    	elseif ($request->filled('video_link'))
     	{
     	
     		$idLink = VideoTreatment::getIdYoutube($request->video_link);
