@@ -2,9 +2,6 @@
 
 namespace App\Http\Requests\Posts\ArticlesVideo;
 
-use App\Http\Requests\Request;
-use App\Http\Requests\Posts\Articlesvideo\AddVideoRequest;
-
 class ModifyVideoRequest extends AddVideoRequest
 {
 
