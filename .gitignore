@@ -3,6 +3,7 @@
 /public/storage
 /public/pics
 /public/ckeditor
+/public/js/app.js
 /public/downloads
 Homestead.yaml
 Homestead.json
