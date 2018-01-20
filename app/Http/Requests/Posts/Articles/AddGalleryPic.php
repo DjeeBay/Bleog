@@ -29,7 +29,7 @@ class AddGalleryPic extends Request
     public function rules()
     {
         return [
-            'photo_file' => 'required|mimes:jpeg,png'/*|max:2080'*/
+            'photo_file' => 'required|mimes:jpeg,png|max:5120'
         ];
     }
     

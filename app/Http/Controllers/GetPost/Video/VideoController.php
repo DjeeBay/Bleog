@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers\GetPost\Video;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\Posts\ArticlesVideo\ModifyVideoRequest;

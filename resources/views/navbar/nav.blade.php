@@ -50,6 +50,17 @@ $years = $navCtrl::getYears();
               </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                @if(Auth::user()->admin == 1)
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <span class="glyphicon glyphicon-cog"></span> Gestion <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ route('uploadPhotos') }}"><span class="glyphicon glyphicon-upload"></span> Upload de photos</a></li>
+                            <li><a href="{{ url('add/article/gallery') }}" onclick="open('/add/article/gallery', 'Popup', 'scrollbars=1,resizable=1,height=800,width=1280'); return false;"><span class="glyphicon glyphicon-picture"></span> Galerie photos</a></li>
+                        </ul>
+                    </li>
+                @endif
             	<li><a href="{{ route('logout') }}"><span class="glyphicon glyphicon-remove" style="vertical-align:text-top"></span> Déconnexion</a></li>
             </ul>
 		</div><!--/.nav-collapse -->
