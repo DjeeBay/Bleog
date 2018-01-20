@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Posts\ArticlesVideo;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Posts\Articlesvideo\AddVideoRequest;
+use App\Http\Requests\Posts\ArticlesVideo\AddVideoRequest;
 use App\Posts\ArticlesVideo\Article_video;
 use App\Http\Controllers\Posts\PostController;
 use Illuminate\Support\Facades\Auth;
