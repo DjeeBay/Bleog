@@ -41,7 +41,7 @@
         methods: {
             getPhotos(e) {
                 this.photos = []
-                this.progress = 0
+                this.progress = 50
                 this.showProgress = false
                 this.hideSendBtn = false
                 let files = e.target.files || e.dataTransfer.files
@@ -61,6 +61,7 @@
                 }
             },
             send() {
+                const vm = this
                 this.showProgress = true
                 let form = new FormData();
                 for (let i = 0; i < this.files.length; i++) {
@@ -70,13 +71,11 @@
                 axios.post('/add/upload_photos', form, {
                     headers: {'Content-Type': 'multipart/form-data'},
                     onUploadProgress: function(e) {
-                        this.progress = Math.round((e.loaded * 100) / e.total)
-                        console.log(this.progress)
+                        vm.progress = Math.round((e.loaded * 100) / e.total)
                     }
                 }).then((res) => {
                     this.$store.dispatch('showAlert', {message: res.data.message, status: res.data.success ? 'success' : 'danger'})
                 }).catch((error) => {
-                    console.log(error.response)
                     this.$store.dispatch('showAlert', {message: error.response.data.message, status: 'danger'})
                 })
             }
@@ -85,7 +84,7 @@
             return {
                 photos: [],
                 files: [],
-                progress: 0,
+                progress: 50,
                 showProgress: false,
                 hideSendBtn: false
             }

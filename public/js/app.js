@@ -42978,7 +42978,7 @@ exports = module.exports = __webpack_require__(41)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -43477,7 +43477,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         getPhotos: function getPhotos(e) {
             this.photos = [];
-            this.progress = 0;
+            this.progress = 50;
             this.showProgress = false;
             this.hideSendBtn = false;
             var files = e.target.files || e.dataTransfer.files;
@@ -43501,6 +43501,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         send: function send() {
             var _this2 = this;
 
+            var vm = this;
             this.showProgress = true;
             var form = new FormData();
             for (var i = 0; i < this.files.length; i++) {
@@ -43510,13 +43511,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.post('/add/upload_photos', form, {
                 headers: { 'Content-Type': 'multipart/form-data' },
                 onUploadProgress: function onUploadProgress(e) {
-                    this.progress = Math.round(e.loaded * 100 / e.total);
-                    console.log(this.progress);
+                    vm.progress = Math.round(e.loaded * 100 / e.total);
                 }
             }).then(function (res) {
                 _this2.$store.dispatch('showAlert', { message: res.data.message, status: res.data.success ? 'success' : 'danger' });
             }).catch(function (error) {
-                console.log(error.response);
                 _this2.$store.dispatch('showAlert', { message: error.response.data.message, status: 'danger' });
             });
         }
@@ -43525,7 +43524,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             photos: [],
             files: [],
-            progress: 0,
+            progress: 50,
             showProgress: false,
             hideSendBtn: false
         };
