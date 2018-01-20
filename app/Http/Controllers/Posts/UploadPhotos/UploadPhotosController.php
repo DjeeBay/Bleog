@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Posts\UploadPhotos;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Posts\UploadPhotosRequest;
 use App\MyLibraries\PhotoTreatment;
 use App\Posts\Articles\ArticlesPics;
 use App\Posts\ArticlesPhoto\Article_photo;
@@ -16,7 +15,7 @@ class UploadPhotosController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('admin');
         $this->model = new Article_photo();
     }
 
