@@ -41,7 +41,7 @@
         methods: {
             getPhotos(e) {
                 this.photos = []
-                this.progress = 50
+                this.progress = 0
                 this.showProgress = false
                 this.hideSendBtn = false
                 let files = e.target.files || e.dataTransfer.files
@@ -84,7 +84,7 @@
             return {
                 photos: [],
                 files: [],
-                progress: 50,
+                progress: 0,
                 showProgress: false,
                 hideSendBtn: false
             }
