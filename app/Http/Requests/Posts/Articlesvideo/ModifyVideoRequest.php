@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Posts\Articlesvideo;
+namespace App\Http\Requests\Posts\ArticlesVideo;
 
 class ModifyVideoRequest extends AddVideoRequest
 {
