@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\Index\NewsletterRequest;
 use App\Posts\Newsletter;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\View\View;
 
 class IndexController extends Controller
 {
@@ -34,9 +34,9 @@ class IndexController extends Controller
 	 * then returns the view to list the posts (monthly)
 	 *
 	 * @param Request $request
-	 * @return view
+	 * @return View
 	 */
-	public function showIndex()
+	public function showIndex(Request $request)
     {
     	$moreToDisplay = ($this->nbOfMonths > 6) ? true : false;
     	$limitsTable = $this->getLimOff();
@@ -71,18 +71,19 @@ class IndexController extends Controller
     	$byMonths = $this->makeTheMonths($months);
     	
     	return view('index/index')->with([
-    			'months' => $byMonths,
-    			'moreToDisplay' => $moreToDisplay,
-    			'hasPrevious' => $hasPrevious,
-    			'hasNext' => $hasNext,
-    			'currentPage' => $this->currentPage
+            'months' => $byMonths,
+            'moreToDisplay' => $moreToDisplay,
+            'hasPrevious' => $hasPrevious,
+            'hasNext' => $hasNext,
+            'currentPage' => $this->currentPage,
+            'liveAge' => $this->getLiveAge()
     	]);
     }
     
     /**
      * Uses posts' query and returns an array ordered by months
      * 
-     * @param array $months
+     * @param \Illuminate\Support\Collection $months
      * @return array
      */
     private function makeTheMonths($months)
@@ -268,5 +269,13 @@ class IndexController extends Controller
 				<hr>
 				<small>Pour ne plus recevoir les newsletters, vous pouvez vous désinscrire en cliquant <a href="http://www.bleog.fr/newsletter/unsuscribe/'.$uniqid.'">ici</a></small>';
     	mail($to, 'Newsletter Bleog.fr', $message, $headers);
+    }
+
+    private function getLiveAge() : string
+    {
+        $interval = date_diff(date_create(), date_create('2015-11-27 01:15:00'));
+        $age = $interval->format('%y ans %m mois et %d jours');
+
+        return $age;
     }
 }
