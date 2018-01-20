@@ -43,7 +43,7 @@
 	<div class="panel-body">
 	{!! Form::open(['route' => 'postGalleryPic', 'files' => 'true']) !!}
 		<div class="form-group">
-			{!! Form::label('photo_file', 'Choisir la photo (jpg, png, max. 2Mo)') !!}
+			{!! Form::label('photo_file', 'Choisir la photo (jpg, png, max. 5Mo)') !!}
 			{!! $errors->first('photo_file', '<small><font color="red"><b>:message</b></font></small>') !!}
 			{!! Form::file('photo_file') !!}
 		</div>

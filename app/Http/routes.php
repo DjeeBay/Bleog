@@ -72,6 +72,16 @@ Route::group(['middleware' => 'web'], function () {
     		'as' => 'addPhoto',
     		'uses' => 'Posts\ArticlesPhoto\ArticlePhotoController@postForm'
     ]);
+
+    Route::get('/add/upload_photos', [
+        'as' => 'uploadPhotos',
+        'uses' => 'Posts\UploadPhotos\UploadPhotosController@get'
+    ]);
+
+    Route::post('/add/upload_photos', [
+        'as' => 'uploadPhotos',
+        'uses' => 'Posts\UploadPhotos\UploadPhotosController@upload'
+    ]);
     
     Route::get('/add/video', [
     		'as' => 'addVideo',

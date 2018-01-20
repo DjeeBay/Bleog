@@ -31,7 +31,7 @@ class AddPhotoRequest extends Request
         return [
             'photo_date' => 'required|date_format:Y-m-d',
         	'photo_description' => 'string',
-        	'photo_file' => 'required|mimes:jpeg,png'/*|max:2080'*/,
+        	'photo_file' => 'required|mimes:jpeg,png|max:5120',
         ];
     }
     

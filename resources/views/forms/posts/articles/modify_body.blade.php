@@ -38,16 +38,16 @@
 			</a>
 			{!! Form::submit('Sauvegarder', ['class' => 'btn btn-primary']) !!}
 		{!! Form::close() !!}
-		<!-- Adding CKEditor -->
-		<script>
-			CKEDITOR.replace('article_body', {
-				filebrowserBrowseUrl: '{{ route('getGallery') }}'
-			});
-		</script>
 @stop
 
 @endforeach
 @section('addScript')
+	<!-- Adding CKEditor -->
+	<script>
+        CKEDITOR.replace('article_body', {
+            filebrowserBrowseUrl: '{{ route('getGallery') }}'
+        });
+	</script>
 	<script src="{{ URL::asset('js/ekko-lightbox.min.js') }}"></script>
 	<script type="text/javascript">
     $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
