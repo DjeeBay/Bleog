@@ -45,17 +45,19 @@
     $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
         event.preventDefault();
         $(this).ekkoLightbox({
+			alwaysShowClose: true,
             onShow: function(elem) {
-                var html = '<span id="dlPic"></span>';
-                $(elem.currentTarget).find('.modal-header').append(html);
-
+                let html = '<span id="dlPic"></span>';
+                let modalHeader = $(elem.currentTarget).find('.modal-header');
+                modalHeader.append(html);
+                $(elem.currentTarget).find('.modal-title').hide();
             },
             onNavigate: function(direction, itemIndex) {
 
             },
 			onContentLoaded: function(e) {
-                var img = $('.ekko-lightbox-container').find('img').attr('src');
-                var html = '<a href="'+img+'" download><button type="button" class="btn btn-primary" style="">Télécharger l\'image</button></a>';
+                let img = $('.ekko-lightbox-container').find('img').attr('src');
+                let html = '<a href="'+img+'" download><button type="button" class="btn btn-primary" style="">Télécharger l\'image</button></a>';
                 $('#dlPic').html(html);
 			}
 		});
