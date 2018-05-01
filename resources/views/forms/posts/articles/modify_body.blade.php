@@ -25,19 +25,19 @@
 	<h2 style="text-align: center; color: red;"><b>Mode édition</b></h2>
 	<h2 style="text-align: center">Article du {{ $article->date }}</h2>
 	<hr>
-	
+
+	{!! Form::open(['route' => ['editArticle', $article->id]]) !!}
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h3 style="text-align: center; font-weight: 800;">{{ $article->title }}</h3>
 		</div>
-		{!! Form::open(['route' => ['editArticle', $article->id]]) !!}
-			{!! Form::textarea('article_body', $article->body) !!}
+		{!! Form::textarea('article_body', $article->body) !!}
 	</div>
-			<a href="{{ route('articlesPage', $article->id) }}" class="btn btn-default">
-				Annuler
-			</a>
-			{!! Form::submit('Sauvegarder', ['class' => 'btn btn-primary']) !!}
-		{!! Form::close() !!}
+		<a href="{{ route('articlesPage', $article->id) }}" class="btn btn-default">
+			Annuler
+		</a>
+		{!! Form::submit('Sauvegarder', ['class' => 'btn btn-primary']) !!}
+	{!! Form::close() !!}
 @stop
 
 @endforeach
