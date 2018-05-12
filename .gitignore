@@ -14,3 +14,4 @@ Homestead.json
 public/favicon-old.ico
 composer.lock
 _ide_helper.php
+/public/.htaccess

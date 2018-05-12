@@ -1,7 +1,8 @@
 body {
-	background-image: url('stars.jpg');
+	background-image: url('../img/stars.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
+	background-size: cover;
 }
 
 .bleog-blue {color: #3ea4e2;}
