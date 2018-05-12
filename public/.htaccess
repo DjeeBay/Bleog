@@ -3,6 +3,10 @@
         Options -MultiViews
     </IfModule>
 
+    <IfModule mod_headers.c>
+        Header always set Strict-Transport-Security "max-age=300; includeSubDomains; preload"
+    </IfModule>
+
     RewriteEngine On
 
     # Redirect Trailing Slashes If Not A Folder...
