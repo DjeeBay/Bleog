@@ -56,13 +56,13 @@ class LoginController extends Controller
     	{
     		if ($request->filled('rememberMe') && $request->rememberMe == 'rememberMe' && $request->inputPseudo == 'visiteur')
     		{
-    			setcookie('username', Auth::user()->login, time() + 3600*24*365*10, null, null, false, true);
-    			setcookie('_pwd', 'visiteur', time() + 3600*24*365*10, null, null, false, true);
+    			setcookie('username', Auth::user()->login, time() + 3600*24*365*10, null, null, true, true);
+    			setcookie('_pwd', 'visiteur', time() + 3600*24*365*10, null, null, true, true);
     		}
     		elseif ($request->filled('rememberMe') && $request->rememberMe == 'rememberMe' && $request->inputPseudo != 'visiteur')
     		{
-    			setcookie('username', Auth::user()->login, time() + 3600*24*365*10, null, null, false, true);
-    			setcookie('_token_user', Auth::user()->getRememberToken(), time() + 3600*24*365*10, null, null, false, true);
+    			setcookie('username', Auth::user()->login, time() + 3600*24*365*10, null, null, true, true);
+    			setcookie('_token_user', Auth::user()->getRememberToken(), time() + 3600*24*365*10, null, null, true, true);
     		}
     		return redirect()->route('index');
     	}
