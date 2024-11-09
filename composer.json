@@ -8,8 +8,8 @@
 	"license" : "MIT",
 	"type" : "project",
 	"require" : {
-		"php" : ">=8.0.2",
-		"laravel/framework" : "^9.0",
+		"php" : ">=8.1.0",
+		"laravel/framework" : "^10.0",
 		"barryvdh/laravel-ide-helper" : "^2.1",
 		"barryvdh/laravel-debugbar": "^v3.0.1",
 		"laravelcollective/html": "^v6.4.1",
